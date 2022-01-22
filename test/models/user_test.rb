@@ -10,4 +10,8 @@ class UserTest < ActiveSupport::TestCase
   test "must be a valid resource" do
     assert resource.valid?
   end
+
+  test "must be guest as default role" do
+    assert resource.guest?
+  end
 end
