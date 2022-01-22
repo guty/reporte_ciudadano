@@ -2,5 +2,5 @@
 
 class LandingController < ApplicationController
   # def index; end
-  layout 'landing'
+  layout "landing"
 end
