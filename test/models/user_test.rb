@@ -1,7 +1,13 @@
+# frozen_string_literal: true
+
 require "test_helper"
 
 class UserTest < ActiveSupport::TestCase
-  # test "the truth" do
-  #   assert true
-  # end
+  def resource
+    @resource ||= build(:user)
+  end
+
+  test "must be a valid resource" do
+    assert resource.valid?
+  end
 end
