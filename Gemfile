@@ -11,10 +11,10 @@ gem "rails", "~> 7.0.1"
 
 gem "bootsnap", require: false
 gem "devise"
+gem "image_processing", "~> 1.2"
 gem "pundit"
 gem "redis", "~> 4.0"
 # gem "kredis"
-# gem "image_processing", "~> 1.2"
 
 gem "cssbundling-rails"
 gem "jbuilder"
