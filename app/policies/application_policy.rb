@@ -73,8 +73,8 @@ class ApplicationPolicy
     user.citizen?
   end
 
-  def servant?
-    user.servant?
+  def official?
+    user.official?
   end
 
   def owner
