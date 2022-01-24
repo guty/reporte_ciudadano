@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 Rails.application.routes.draw do
-  root 'landing#index'
+  root "landing#index"
   devise_for :users
   resources :categories
 end
