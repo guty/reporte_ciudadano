@@ -1,5 +1,7 @@
+# frozen_string_literal: true
+
 class DependenciesController < ApplicationController
-  before_action :set_dependency, only: %i[ show edit update destroy ]
+  before_action :set_dependency, only: %i[show edit update destroy]
 
   # GET /dependencies or /dependencies.json
   def index
@@ -7,8 +9,7 @@ class DependenciesController < ApplicationController
   end
 
   # GET /dependencies/1 or /dependencies/1.json
-  def show
-  end
+  def show; end
 
   # GET /dependencies/new
   def new
@@ -16,8 +17,7 @@ class DependenciesController < ApplicationController
   end
 
   # GET /dependencies/1/edit
-  def edit
-  end
+  def edit; end
 
   # POST /dependencies or /dependencies.json
   def create
@@ -58,13 +58,14 @@ class DependenciesController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_dependency
-      @dependency = Dependency.find(params[:id])
-    end
 
-    # Only allow a list of trusted parameters through.
-    def dependency_params
-      params.require(:dependency).permit(:name, :active)
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_dependency
+    @dependency = Dependency.find(params[:id])
+  end
+
+  # Only allow a list of trusted parameters through.
+  def dependency_params
+    params.require(:dependency).permit(:name, :active)
+  end
 end
