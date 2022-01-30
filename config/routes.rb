@@ -3,9 +3,9 @@
 Rails.application.routes.draw do
   # devise_for :users
   devise_for :users, controllers: {
-    registrations: 'users/registrations'
+    registrations: "users/registrations"
   }
-  root 'landing#index'
+  root "landing#index"
 
   resources :categories
   resources :dependencies

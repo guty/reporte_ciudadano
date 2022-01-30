@@ -11,7 +11,7 @@ class UserTest < ActiveSupport::TestCase
     assert resource.valid?
   end
 
-  test "must be guest as default role" do
-    assert resource.guest?
+  test "must be citizen as default role" do
+    assert resource.citizen?
   end
 end
