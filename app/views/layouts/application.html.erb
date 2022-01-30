@@ -10,8 +10,13 @@
     <script src="https://kit.fontawesome.com/0187e7cebe.js" crossorigin="anonymous"></script>
   </head>
   <body>
-    <p class="notice"><%= notice %></p>
-    <p class="alert"><%= alert %></p>
+    <%=render "shared/navbar"%>
+    <% unless notice.nil? %>
+      <div class="notification is-info is-light has-text-centered mb-0"><%= notice %></div>
+    <% end %>
+    <% unless alert.nil? %>
+      <div class="notification is-danger is-light has-text-centered mb-0"><%= alert %></div>
+    <% end %>
     <%= yield %>
   </body>
 </html>

@@ -1,26 +1,53 @@
-<h2>Log in</h2>
-
-<%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
-  </div>
-
-  <div class="field">
-    <%= f.label :password %><br />
-    <%= f.password_field :password, autocomplete: "current-password" %>
-  </div>
-
-  <% if devise_mapping.rememberable? %>
-    <div class="field">
-      <%= f.check_box :remember_me %>
-      <%= f.label :remember_me %>
+<section class="section">
+  <div class="columns">
+    <div class="column is-8-mobile is-8-tablet is-6-desktop is-4-fullhd is-offset-4-fullhd is-offset-3-desktop is-offset-2-tablet is-offset-2-mobile">
+      <figure class="image">
+        <%= image_tag 'devise/img-citizen-login.png' %>
+      </figure>
     </div>
-  <% end %>
-
-  <div class="actions">
-    <%= f.submit "Log in" %>
   </div>
-<% end %>
-
-<%= render "devise/shared/links" %>
+  <div class="column has-text-centered is-8-mobile is-8-tablet is-6-desktop is-4-fullhd is-offset-4-fullhd is-offset-3-desktop is-offset-2-tablet is-offset-2-mobile">
+    <h1 class="title">Ingresa a tu cuenta</h1>
+    <h2 class="subtitle">
+      Introduce tu correo electrónico y contraseña para poder acceder a tu espacio.
+    </h2>
+  </div>
+</div>
+<section class="section">
+  <div class="columns">
+    <div class="column is-8-mobile is-8-tablet is-6-desktop is-4-fullhd is-offset-4-fullhd is-offset-3-desktop is-offset-2-tablet is-offset-2-mobile">
+      <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+        <div class="field">
+          <div class="control has-icons-left has-icons-right">
+            <%= f.text_field :email, class: "input", type: "email", placeholder: "mi@correo.com" %>
+            <span class="icon is-small is-left">
+              <i class="fas fa-envelope" aria-hidden="true"></i>
+            </span>
+          </div>
+        </div>
+        <div class="field">
+          <p class="control has-icons-left">
+            <%= f.password_field :password, autocomplete: "current-password", class: "input", placeholder: "Contraseña" %>
+            <span class="icon is-small is-left">
+              <i class="fas fa-lock" aria-hidden="true"></i>
+            </span>
+          </p>
+        </div>
+        <% if devise_mapping.rememberable? %>
+          <div class="field">
+            <%= f.check_box :remember_me, class: "checkbox" %>
+            Recuérdame
+          </div>
+        <% end %>
+        <div class="field is-grouped is-grouped-centered">
+          <p class="control">
+            <%= button_tag type: 'submit', form:"new_user", class: "button is-info", disable_with: 'Ingresando...' do %>
+              <i class="fas fa-user" aria-hidden="true"> </i>&nbsp;Ingresar
+            <% end %>
+          </p>
+        </div>
+      <% end %>
+      <%= render "devise/shared/links" %>
+    </div>
+  </div>
+</div>

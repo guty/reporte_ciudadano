@@ -65,16 +65,16 @@ class ApplicationPolicy
     user.admin?
   end
 
-  def guest?
-    user.guest?
-  end
-
   def citizen?
     user.citizen?
   end
 
-  def official?
-    user.official?
+  def director?
+    user.director?
+  end
+
+  def employee?
+    user.employee?
   end
 
   def owner
