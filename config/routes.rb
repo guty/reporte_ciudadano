@@ -2,9 +2,11 @@
 
 Rails.application.routes.draw do
   devise_for :users, controllers: {
-    registrations: "users/registrations"
+    registrations: 'users/registrations'
   }
-  root "landing#index"
+  root 'landing#index'
+
+  resources :dashboards, path: 'ciudadano', only: [:index]
 
   resources :categories
   resources :dependencies
