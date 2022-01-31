@@ -1,43 +1,73 @@
-<section class="hero is-info is-medium">
-  <div class="hero-head">
-    <nav class="navbar">
-      <div class="container">
-        <div class="navbar-brand">
-          <a class="navbar-item">
-            <i class="fas fa-map-marker-alt fa-3x"></i>
-          </a>
-          <span class="navbar-burger" data-target="landingMenu">
-            <span></span>
-            <span></span>
-            <span></span>
-          </span>
+<nav class="bd-navbar navbar">
+  <div class="navbar-brand">
+    <span class="navbar-burger" data-target="landingMenu">
+      <span></span>
+      <span></span>
+      <span></span>
+    </span>
+  </div>
+  <div id="landingMenu" class="navbar-menu">
+    <div class="navbar-end">
+      <span class="navbar-item">
+        <% if signed_in? %>
+          <%= link_to destroy_user_session_path, class: "button is-info", 'data-turbo-method': :delete do %>
+            <i class="fas fa-sign-out-alt" aria-hidden="true"></i>&nbsp;Cerrar sesión
+          <% end %>
+        <% else %>
+          <%= link_to new_user_session_path, class: "button is-info" do %>
+            <em class="fas fa-sign-in-alt"></em>&nbsp;Iniciar sesión
+          <% end %>
+        <% end %>
+      </span>
+    </div>
+  </div>
+</nav>
+<section class="section">
+  <div class="columns">
+    <div class="column is-offset-3-desktop is-2 has-text-right">
+      <i class="fas fa-map-marker-alt fa-5x has-text-info" aria-hidden="true"></i>
+    </div>
+    <div class="column is-6">
+      <p><strong class="title">MI CIUDAD</strong></p>
+      <p><span class="is-size-3">Reporte Ciudadano</span></p>
+    </div>
+  </div>
+  <div class="columns">
+    <div class="column is-4 is-offset-1 is-flex is-align-items-center">
+      <div class="has-text-right">
+        <h2 class="is-size-3 has-text-info-dark">Bienvenid@</h2>
+        <h2 class="subtitle">
+          Porque <strong>nuestra ciudad</strong> es responsabilidad de todas y todos; tu ayuda es escencial para mantenerla limpia, ordenada y funcional.
+        </h2>
+      </div>
+    </div>
+    <div class="column is-6">
+      <%= image_tag 'landing/family-bycicle.jpg' %>
+    </div>
+  </div>
+  <div class="columns">
+    <div class="column is-4 is-offset-2">
+      <h2 class="is-size-3">¿Como va mi reporte?</h2>
+      <span class="subtitle">Para conocer el estado de un reporte solo es necesario proporcionar el folio que lo identifica.</span>
+      <div class="field has-addons mt-1">
+        <div class="control">
+          <input class="input" type="text" placeholder="Folio de reporte">
         </div>
-        <div id="landingMenu" class="navbar-menu">
-          <div class="navbar-end">
-            <a class="navbar-item is-active">
-              Reporte Ciudadano
-            </a>
-            <span class="navbar-item">
-              <a class="button is-info is-inverted">
-                <span class="icon">
-                  <i class="fas fa-user"></i>
-                </span>
-                <span>Acceso</span>
-              </a>
-            </span>
-          </div>
+        <div class="control">
+          <a class="button is-info">
+            Buscar
+          </a>
         </div>
       </div>
-    </nav>
-  </div>
-  <div class="hero-body">
-    <div class="container">
-      <p class="title">
-        Reporte Ciudadano
-      </p>
-      <p class="subtitle">
-        Porque NUESTRA CIUDAD es responsabilidad de todos
-      </p>
+    </div>
+    <div class="column is-4">
+      <h2 class="is-size-3">Regístrate</h2>
+      <span class="subtitle">Como usuario registrado podrás visualizar todos tus reportes y recibir notificaciones.</span>
+      <div class="control has-icons-left mt-1">
+        <%= link_to new_user_registration_path, class: "button is-info" do %>
+          <i class="fas fa-user-plus" aria-hidden="true"> </i>&nbsp;Quiero registrarme
+        <% end %>
+      </div>
     </div>
   </div>
 </section>

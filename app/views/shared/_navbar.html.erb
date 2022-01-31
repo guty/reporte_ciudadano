@@ -1,0 +1,33 @@
+<nav class="navbar is-info">
+  <div class="container">
+    <div class="navbar-brand">
+      <%= link_to root_path, class: "navbar-item" do %>
+        <i class="fas fa-map-marker-alt fa-3x" aria-hidden="true"></i>
+      <% end %>
+      <h1 class="is-size-6 has-text-white">MI CIUDAD<br>
+        Reporte Ciudadano</h1>
+      <span class="navbar-burger" data-target="landingMenu">
+        <span></span>
+        <span></span>
+        <span></span>
+      </span>
+    </div>
+    <div id="landingMenu" class="navbar-menu">
+      <div class="navbar-end">
+        <span class="navbar-item">
+          <% if signed_in? %>
+            <%= link_to destroy_user_session_path, class: "button is-info is-inverted", 'data-turbo-method': :delete do %>
+              <i class="fas fa-sign-out-alt" aria-hidden="true"></i>&nbsp;Cerrar sesión
+            <% end %>
+          <% else %>
+            <% unless current_page?(new_user_session_path) %>
+              <%= link_to new_user_session_path, class: "button is-info is-inverted" do %>
+                <em class="fas fa-user"></em>&nbsp;Acceso
+              <% end %>
+            <% end %>
+          <% end %>
+        </span>
+      </div>
+    </div>
+  </div>
+</nav>

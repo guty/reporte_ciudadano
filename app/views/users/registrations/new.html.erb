@@ -1,0 +1,141 @@
+<section class="section">
+  <div class="container">
+    <div class="columns">
+      <div class="column is-flex is-align-items-center is-8-mobile is-8-tablet is-3-desktop is-5-fullhd">
+        <%= image_tag 'devise/sign-up.jpg', alt: "Nuevo registro de ciudadano" %>
+      </div>
+      <div class="column is-7-fullhd">
+        <div class="mb-5">
+          <h2 class="is-size-3 has-text-info-dark mb-3">¿Ya tienes tu cuenta de <em>Ciudadano</em>?</h2>
+          <p class="subtitle">
+            Al registrarte participas de manera activa en el cuidado de nuestra ciudad; así mismo, con tu cuenta podrás consultar todos 
+            tus reportes, nuevos, anteriores, en proceso o atendidos.
+          </p>
+        </div>
+        <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+          <%= render "users/shared/error_messages", resource: resource %>
+          <div class="field is-horizontal">
+            <div class="field-label is-normal">
+              <label class="label">Nombre</label>
+            </div>
+            <div class="field-body">
+              <div class="field">
+                <p class="control is-expanded has-icons-left">
+                  <%= f.text_field :name, autofocus: true, class: "input", placeholder: "Nombre(s)" %>
+                  <span class="icon is-small is-left">
+                    <i class="fas fa-user" aria-hidden="true"></i>
+                  </span>
+                </p>
+              </div>
+            </div>
+          </div>
+          <div class="field is-horizontal">
+            <div class="field-label"></div>
+            <div class="field-body">
+              <div class="field">
+                <p class="control has-icons-left">
+                  <%= f.text_field :middle_name, class: "input", placeholder: "Primer apellido" %>
+                  <span class="icon is-small is-left">
+                    <i class="fas fa-user" aria-hidden="true"></i>
+                  </span>
+                </p>
+              </div>
+              <div class="field">
+                <p class="control has-icons-left">
+                  <%= f.text_field :last_name, class: "input", placeholder: "Segundo apellido" %>
+                  <span class="icon is-small is-left">
+                    <i class="fas fa-user" aria-hidden="true"></i>
+                  </span>
+                </p>
+              </div>
+            </div>
+          </div>
+          <div class="field is-horizontal">
+            <div class="field-label is-normal">
+              <label class="label">Correo</label>
+            </div>
+            <div class="field-body">
+              <div class="field">
+                <p class="control is-expanded has-icons-left">
+                  <%= render "devise/shared/error_messages", resource: resource %>
+                  <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "input", placeholder: "mi@correo.com" %>
+                  <span class="icon is-small is-left">
+                    <i class="fas fa-envelope" aria-hidden="true"></i>
+                  </span>
+                </p>
+              </div>
+            </div>
+          </div>
+          <div class="field is-horizontal">
+            <div class="field-label is-normal">
+              <label class="label">Contraseña</label>
+            </div>
+            <div class="field-body">
+              <div class="field">
+                <p class="control is-expanded has-icons-left">
+                  <%= f.password_field :password, autocomplete: "new-password", class: "input", placeholder: "Contraseña" %>
+                  <span class="icon is-small is-left">
+                    <i class="fas fa-lock" aria-hidden="true"></i>
+                  </span>
+                </p>
+                <% if @minimum_password_length %>
+                  <em class="help">(Mínimo <%= @minimum_password_length %> caracteres)</em>
+                <% end %>
+              </div>
+              <div class="field">
+                <p class="control is-expanded has-icons-left">
+                  <%= f.password_field :password_confirmation, autocomplete: "new-password", class: "input", placeholder: "Confirmar contraseña" %>
+                  <span class="icon is-small is-left">
+                    <i class="fas fa-lock" aria-hidden="true"></i>
+                  </span>
+                </p>
+              </div>
+            </div>
+          </div>
+          <div class="field is-horizontal">
+            <div class="field-label is-normal">
+              <label class="label">Domicilio</label>
+            </div>
+            <div class="field-body">
+              <div class="field">
+                <div class="control">
+                  <%= f.text_area :address, class: "textarea", placeholder: "Domicilio completo" %>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="field is-horizontal">
+            <div class="field-label"></div>
+            <div class="field-body">
+              <div class="field is-expanded">
+                <div class="field has-addons">
+                  <p class="control">
+                    <a class="button is-static">
+                      +52
+                    </a>
+                  </p>
+                  <p class="control is-expanded">
+                    <%= f.text_field :mobile, class: "input", placeholder: "Num. de teléfono o celular" %>
+                  </p>
+                </div>
+                <p class="help">Ejemplo: 312 123 4567</p>
+              </div>
+            </div>
+          </div>
+          <div class="field is-horizontal">
+            <div class="field-label">
+              <!-- Left empty for spacing -->
+            </div>
+            <div class="field-body">
+              <div class="field">
+                <div class="control">
+                  <%= button_tag "Registrarme", type: 'submit', form:"new_user", class: "button is-info", disable_with: 'Ingresando...' %>
+                </div>
+              </div>
+            </div>
+          </div>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</section>
