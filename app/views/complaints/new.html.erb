@@ -48,8 +48,7 @@
               <div class="field">
                 <div class="control has-icons-left">
                   <div class="select">
-                    <% options = options_from_collection_for_select(@categories, 'id', 'name') %>
-                    <%= f.select :category_id, options, { prompt: 'Tipo de evento' } %>
+                    <%= f.select :category_id, category_options_for(@categories), { prompt: 'Tipo de evento' } %>
                   </div>
                   <div class="icon is-small is-left">
                     <i class="fas fa-bookmark" aria-hidden="true"></i>
