@@ -1,4 +1,6 @@
-require 'test_helper'
+# frozen_string_literal: true
+
+require "test_helper"
 
 class DashboardsControllerTest < ActionDispatch::IntegrationTest
   include Devise::Test::IntegrationHelpers
@@ -7,7 +9,7 @@ class DashboardsControllerTest < ActionDispatch::IntegrationTest
     sign_in FactoryBot.create(:user)
   end
 
-  test 'should get index' do
+  test "should get index" do
     get dashboards_url
     assert_response :success
   end
