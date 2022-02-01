@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_01_31_031430) do
+ActiveRecord::Schema.define(version: 2022_02_01_004638) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -46,9 +46,9 @@ ActiveRecord::Schema.define(version: 2022_01_31_031430) do
   create_table "categories", force: :cascade do |t|
     t.string "name"
     t.boolean "active"
-    t.bigint "dependency_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.bigint "dependency_id"
     t.index ["dependency_id"], name: "index_categories_on_dependency_id"
   end
 
@@ -102,7 +102,6 @@ ActiveRecord::Schema.define(version: 2022_01_31_031430) do
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
-  add_foreign_key "categories", "dependencies"
   add_foreign_key "complaints", "categories"
   add_foreign_key "complaints", "users"
 end
