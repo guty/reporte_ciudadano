@@ -2,7 +2,7 @@
 
 FactoryBot.define do
   factory :category do
-    name { "Fuga de agua" }
+    name { 'Fuga de agua' }
     dependency { association :dependency }
     active { true }
   end

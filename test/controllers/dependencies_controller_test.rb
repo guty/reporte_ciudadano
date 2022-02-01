@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-require "test_helper"
+require 'test_helper'
 
 class DependenciesControllerTest < ActionDispatch::IntegrationTest
   include Devise::Test::IntegrationHelpers
@@ -10,7 +10,7 @@ class DependenciesControllerTest < ActionDispatch::IntegrationTest
     @dependency = create(:dependency)
   end
 
-  test "should get index" do
+  test 'should get index' do
     get dependencies_url
     assert_response :success
   end
