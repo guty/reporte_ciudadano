@@ -6,6 +6,9 @@ Rails.application.routes.draw do
   }
   root "landing#index"
 
+  resources :dashboards, path: "ciudadano", only: [:index]
+  resources :complaints
+
   resources :categories
   resources :dependencies
 end
