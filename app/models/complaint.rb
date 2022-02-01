@@ -6,9 +6,9 @@ class Complaint < ApplicationRecord
   belongs_to :category
 
   enum :status,
-       { created: 'created',
-         in_process: 'in_process',
-         attended: 'attended',
-         attended_by_program: 'attended_by_program',
-         rejected: 'rejected' }
+       { created: "created",
+         in_process: "in_process",
+         attended: "attended",
+         attended_by_program: "attended_by_program",
+         rejected: "rejected" }
 end
