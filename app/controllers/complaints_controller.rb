@@ -13,7 +13,7 @@ class ComplaintsController < AuthorizationsController
   end
 
   def create
-    @complaint = Complaint.new(complaint_params)
+    @complaint = current_user.complaints.new(complaint_params)
     @complaint.created!
 
     if @complaint.save
