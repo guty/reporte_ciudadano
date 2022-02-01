@@ -1,0 +1,132 @@
+<section class="section">
+  <div class="container">
+    <div class="columns">
+      <div class="column is-8-fullhd">
+        <div class="mb-5">
+          <h2 class="is-size-3 has-text-info-dark mb-3">Nuevo Reporte Ciudadano</h2>
+          <p class="subtitle">
+            Para generar un <em>nuevo reporte</em> es necesario que completes este formulario, recuerda que es esencial 
+            especificar el<strong> problema</strong> y la <strong>ubicación exacta</strong> del mismo.
+          </p>
+        </div>
+        <%= form_with model: @complaint, id: "new_complaint" do |f| %>
+          <% if @complaint.errors.any? %>
+            <%= @complaint.errors.full_messages%>
+          <% end %>
+          <div class="field is-horizontal">
+            <div class="field-label is-normal">
+              <label class="label">Evento</label>
+            </div>
+            <div class="field-body">
+              <div class="field">
+                <p class="control is-expanded has-icons-left">
+                  <%= f.text_field :subject, autofocus: true, class: "input", placeholder: "¿Que es lo que sucede?" %>
+                  <span class="icon is-small is-left">
+                    <i class="fas fa-info-circle" aria-hidden="true"></i>
+                  </span>
+                </p>
+              </div>
+            </div>
+          </div>
+          <div class="field is-horizontal">
+            <div class="field-label is-normal">
+              <label class="label">Descripción</label>
+            </div>
+            <div class="field-body">
+              <div class="field">
+                <div class="control">
+                  <%= f.text_area :description, class: "textarea", placeholder: "Describe un poco más la situación" %>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="field is-horizontal">
+            <div class="field-label is-normal">
+              <label class="label">Tipo</label>
+            </div>
+            <div class="field-body">
+              <div class="field">
+                <div class="control has-icons-left">
+                  <div class="select">
+                    <% options = options_from_collection_for_select(@categories, 'id', 'name') %>
+                    <%= f.select :category_id, options, { prompt: 'Tipo de evento' } %>
+                  </div>
+                  <div class="icon is-small is-left">
+                    <i class="fas fa-bookmark" aria-hidden="true"></i>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="field is-horizontal">
+            <div class="field-label is-normal">
+              <label class="label">Domicilio</label>
+            </div>
+            <div class="field-body">
+              <div class="field">
+                <div class="control">
+                  <%= f.text_area :address, class: "textarea", placeholder: "Domicilio donde se presenta el evento" %>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="field is-horizontal">
+            <div class="field-label is-normal">
+              <label class="label">Colonia/Localidad</label>
+            </div>
+            <div class="field-body">
+              <div class="field">
+                <p class="control is-expanded has-icons-left">
+                  <%= f.text_field :neighbourhood, class: "input", placeholder: "Colonia" %>
+                  <span class="icon is-small is-left">
+                    <i class="fas fa-map-signs" aria-hidden="true"></i>
+                  </span>
+                </p>
+              </div>
+              <div class="field">
+                <p class="control is-expanded has-icons-left">
+                  <%= f.text_field :town, class: "input", placeholder: "Localidad" %>
+                  <span class="icon is-small is-left">
+                    <i class="fas fa-university" aria-hidden="true"></i>
+                  </span>
+                </p>
+              </div>
+            </div>
+          </div>
+          <div class="field is-horizontal">
+            <div class="field-label is-normal">
+              <label class="label">Mapa</label>
+            </div>
+            <div class="field-body">
+              <div class="field">
+                <div class="control">
+                  <%= link_to "#", class: "button is-info is-light" do %>
+                    <i class="fas fa-map-marker-alt" aria-hidden="true"> </i>&nbsp;Ubicar en mapa
+                  <% end %>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="field is-horizontal">
+            <div class="field-label">
+              <!-- Left empty for spacing -->
+              <%= f.hidden_field :user_id, value: current_user.id %>
+            </div>
+            <div class="field-body">
+              <div class="field">
+                <div class="control">
+                  <%= button_tag "Enviar", type: 'submit', form:"new_complaint", class: "button is-info", disable_with: 'Enviando...' do %>
+                    <i class="fas fa-arrow-circle-right" aria-hidden="true"> </i>&nbsp;Enviar reporte
+                  <% end %>
+                </div>
+              </div>
+            </div>
+          </div>
+        <% end %>
+      </div>
+      <div class="column is-8-mobile is-8-tablet is-3-desktop is-4-fullhd">
+        <%= image_tag 'complaint/new-complaint.jpg', alt: "Nuevo reporte ciudadano" %>
+      </div>
+    </div>
+  </div>
+</section>

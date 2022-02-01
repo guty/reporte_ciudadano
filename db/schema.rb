@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_01_30_022920) do
+ActiveRecord::Schema.define(version: 2022_02_01_014811) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -48,6 +48,25 @@ ActiveRecord::Schema.define(version: 2022_01_30_022920) do
     t.boolean "active"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.bigint "dependency_id"
+    t.index ["dependency_id"], name: "index_categories_on_dependency_id"
+  end
+
+  create_table "complaints", force: :cascade do |t|
+    t.string "subject"
+    t.text "description"
+    t.text "address"
+    t.string "neighbourhood"
+    t.string "town"
+    t.float "latitude"
+    t.float "longitude"
+    t.bigint "user_id", null: false
+    t.bigint "category_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.string "status", default: "created", null: false
+    t.index ["category_id"], name: "index_complaints_on_category_id"
+    t.index ["user_id"], name: "index_complaints_on_user_id"
   end
 
   create_table "dependencies", force: :cascade do |t|
@@ -71,8 +90,8 @@ ActiveRecord::Schema.define(version: 2022_01_30_022920) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.integer "role", default: 0
-    t.string "name", default: "Jhon", null: false
-    t.string "middle_name", default: "Doe", null: false
+    t.string "name", default: "", null: false
+    t.string "middle_name", default: "", null: false
     t.string "last_name"
     t.text "address"
     t.string "mobile"
@@ -83,4 +102,6 @@ ActiveRecord::Schema.define(version: 2022_01_30_022920) do
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
+  add_foreign_key "complaints", "categories"
+  add_foreign_key "complaints", "users"
 end
