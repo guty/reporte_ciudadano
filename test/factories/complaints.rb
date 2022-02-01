@@ -7,8 +7,7 @@ FactoryBot.define do
     town { 'Colima' }
     latitude {}
     longitude {}
-    user { User.last }
-    category { Category.first }
-    dependency { Dependency.last }
+    user { association :user }
+    category { association :category }
   end
 end
