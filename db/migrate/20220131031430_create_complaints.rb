@@ -8,9 +8,9 @@ class CreateComplaints < ActiveRecord::Migration[7.0]
       t.string :town
       t.float :latitude
       t.float :longitude
+      t.string :status, null: false, default: 'created'
       t.references :user, null: false, foreign_key: true
       t.references :category, null: false, foreign_key: true
-      t.references :dependency, null: false, foreign_key: true
 
       t.timestamps
     end

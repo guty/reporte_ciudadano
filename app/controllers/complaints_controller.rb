@@ -1,7 +1,6 @@
 # frozen_string_literal: true
 
-class ComplaintsController < ApplicationController
-  before_action :authenticate_user!
+class ComplaintsController < AuthorizationsController
   before_action :set_complaint, only: %i[show edit update destroy]
   before_action :fetch_categories, only: %i[new create edit update]
 
@@ -14,7 +13,7 @@ class ComplaintsController < ApplicationController
   end
 
   def create
-    @complaint = Complaint.new(complaint_params)
+    @complaint = current_user.complaints.new(complaint_params)
     @complaint.created!
 
     if @complaint.save
