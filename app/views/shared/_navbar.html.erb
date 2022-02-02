@@ -11,6 +11,9 @@
       </span>
     </div>
     <div id="landingMenu" class="navbar-menu">
+      <div class="navbar-start">
+        <%= link_to 'Inicio', dashboards_path, class: "navbar-item" %>
+      </div>
       <div class="navbar-end">
         <span class="navbar-item">
           <% if signed_in? %>

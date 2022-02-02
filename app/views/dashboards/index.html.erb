@@ -1,3 +1,88 @@
 <p style="color: green"><%= notice %></p>
-<h1>Dashboards</h1>
-<%= link_to "Nuevo reporte", new_complaint_path %>
+<section class="section">
+  <div class="columns">
+    <div class="column">
+      <div class="box has-text-centered">
+        <span class="tag is-dark is-large"><%= @created %></span>
+        <span class="subtitle"><strong>Nuevos</strong></span>
+      </div>
+    </div>
+    <div class="column">
+      <div class="box has-text-centered">
+        <span class="tag is-warning is-large"> <%= @in_process %> </span>
+        <span class="subtitle"><strong>En proceso</strong></span>
+      </div>
+    </div>
+    <div class="column">
+      <div class="box has-text-centered">
+        <span class="tag is-success is-large"><%= @attended %></span>
+        <span class="subtitle"><strong>Atendidos</strong></span>
+      </div>
+    </div>
+    <div class="column">
+      <div class="box has-text-centered">
+        <span class="tag is-danger is-large"><%= @rejected %></span>
+        <span class="subtitle"><strong>Rechazados</strong></span>
+      </div>
+    </div>
+  </div>
+</section>
+<section class="section">
+  <div class="columns">
+    <div class="column">
+      <div class="field has-addons mt-1">
+        <div class="control">
+          <input class="input" type="text" placeholder="Folio de reporte">
+        </div>
+        <div class="control">
+          <a class="button is-info">
+            <i class="fas fa-search" aria-hidden="true"> </i>&nbsp;Buscar
+          </a>
+        </div>
+      </div>
+    </div>
+    <div class="column">
+      <div class="control has-icons-left mt-1">
+        <%= link_to new_complaint_path, class: "button is-info" do %>
+          <i class="fas fa-file-alt" aria-hidden="true"> </i>&nbsp;Nuevo reporte
+        <% end %>
+      </div>
+    </div>
+  </div>
+</section>
+<section class="section">
+  <div class="container">
+    <p class="is-size-4"><strong>Mis reportes</strong></p>
+    <table class="table is-fullwidth is-hoverable">
+      <thead>
+        <tr>
+          <th>Folio</th>
+          <th>Asunto</th>
+          <th>Estatus</th>
+          <th>Categoría</th>
+          <th>Dependencia</th>
+          <th>Último movimiento</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% if !@complaints.blank? %>
+          <% for complaint in @complaints %>
+            <tr>
+              <td><%= link_to complaint.id, complaint_url(complaint) %></td>
+              <td><%= complaint.subject %></td>
+              <td><%= complaint.status %></td>
+              <td><%= complaint.category.name %></td>
+              <td><%= complaint.category.dependency.name %></td>
+              <td><%= date_format(complaint.updated_at) %></td>
+            </tr>
+          <% end %>
+        <% else%>
+          <tr>
+            <td colspan="6"> Aún no has generado ningún reporte
+            </td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+</section>
