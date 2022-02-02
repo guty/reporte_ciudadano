@@ -10,7 +10,11 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
+<<<<<<< HEAD
 ActiveRecord::Schema.define(version: 2022_01_31_031430) do
+=======
+ActiveRecord::Schema.define(version: 2022_02_01_004638) do
+>>>>>>> 1e793ae3698e2c6d44d70a3280d83445fb3094e7
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -49,6 +53,7 @@ ActiveRecord::Schema.define(version: 2022_01_31_031430) do
     t.bigint "dependency_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.bigint "dependency_id"
     t.index ["dependency_id"], name: "index_categories_on_dependency_id"
   end
 
@@ -102,7 +107,10 @@ ActiveRecord::Schema.define(version: 2022_01_31_031430) do
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
+<<<<<<< HEAD
   add_foreign_key "categories", "dependencies"
+=======
+>>>>>>> 1e793ae3698e2c6d44d70a3280d83445fb3094e7
   add_foreign_key "complaints", "categories"
   add_foreign_key "complaints", "users"
 end
