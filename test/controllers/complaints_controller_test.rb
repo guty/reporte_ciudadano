@@ -7,16 +7,13 @@ class ComplaintsControllerTest < ActionDispatch::IntegrationTest
 
   def setup
     sign_in FactoryBot.create(:user)
+    @complaint = create(:complaint)
   end
-  # test 'should get index' do
-  #   get complaint_index_url
-  #   assert_response :success
-  # end
 
-  # test 'should get show' do
-  #   get complaint_show_url
-  #   assert_response :success
-  # end
+  test "should get show" do
+    get complaint_url(@complaint.id)
+    assert_response :success
+  end
 
   test "should get new" do
     get new_complaint_url
