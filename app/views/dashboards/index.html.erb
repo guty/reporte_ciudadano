@@ -70,7 +70,7 @@
             <tr>
               <td><%= link_to complaint.id, complaint_url(complaint) %></td>
               <td><%= complaint.subject %></td>
-              <td><%= complaint.status %></td>
+              <td><%= status_name(complaint.status) %></td>
               <td><%= complaint.category.name %></td>
               <td><%= complaint.category.dependency.name %></td>
               <td><%= date_format(complaint.updated_at) %></td>
@@ -78,8 +78,7 @@
           <% end %>
         <% else%>
           <tr>
-            <td colspan="6"> Aún no has generado ningún reporte
-            </td>
+            <td colspan="6"> Aún no has generado ningún reporte</td>
           </tr>
         <% end %>
       </tbody>

@@ -1,0 +1,9 @@
+es:
+  activerecord:
+    attributes:
+      complaint/status:
+        created: Nueva
+        in_proccess: En proceso
+        attended: Atendida
+        attended_by_program: Atendida por programa
+        rejected: Rechazada

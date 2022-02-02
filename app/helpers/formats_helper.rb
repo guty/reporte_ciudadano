@@ -2,6 +2,10 @@
 
 module FormatsHelper
   def date_format(date)
-    date.strftime('%d/%B/%Y %l:%M %p')
+    l(date, format: :short)
+  end
+
+  def status_name(status)
+    Complaint.human_attribute_name("status.#{status}")
   end
 end

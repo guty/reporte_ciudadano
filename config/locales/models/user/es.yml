@@ -1,0 +1,8 @@
+es:
+  activerecord:
+    attributes:
+      user/role:
+        citizen: Ciudadano
+        employee: Colaborador
+        director: Director
+        admin: Administrador
