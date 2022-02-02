@@ -6,6 +6,6 @@ module FormatsHelper
   end
 
   def format_id(id)
-    "%04d" % id
+    format("%04d", id)
   end
 end

@@ -30,16 +30,18 @@
 <section class="section">
   <div class="columns">
     <div class="column">
-      <div class="field has-addons mt-1">
-        <div class="control">
-          <input class="input" type="text" placeholder="Folio de reporte">
+      <%= form_with url: complaints_url, id:"find_complaint", method: :get do |f| %>
+        <div class="field has-addons">
+          <div class="control">
+            <input name="id" class="input" type="text" placeholder="Folio de reporte">
+          </div>
+          <div class="control">
+            <%= button_tag type: 'submit', form:"find_complaint", class: "button is-info", disable_with: 'Enviando...' do %>
+              <i class="fas fa-search" aria-hidden="true"> </i>&nbsp;Buscar
+            <% end %>
+          </div>
         </div>
-        <div class="control">
-          <a class="button is-info">
-            <i class="fas fa-search" aria-hidden="true"> </i>&nbsp;Buscar
-          </a>
-        </div>
-      </div>
+      <% end %>
     </div>
     <div class="column">
       <div class="control has-icons-left mt-1">
