@@ -5,7 +5,7 @@ module FormatsHelper
     l(date, format: :short)
   end
 
-  def status_name(status)
-    Complaint.human_attribute_name("status.#{status}")
+  def format_id(id)
+    "%04d" % id
   end
 end

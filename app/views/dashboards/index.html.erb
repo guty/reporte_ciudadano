@@ -68,7 +68,7 @@
         <% if !@complaints.blank? %>
           <% for complaint in @complaints %>
             <tr>
-              <td><%= link_to complaint.id, complaint_url(complaint) %></td>
+              <td><%= link_to format_id(complaint.id), complaint_url(complaint) %></td>
               <td><%= complaint.subject %></td>
               <td><%= status_name(complaint.status) %></td>
               <td><%= complaint.category.name %></td>

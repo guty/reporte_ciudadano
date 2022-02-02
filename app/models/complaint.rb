@@ -7,7 +7,7 @@ class Complaint < ApplicationRecord
 
   enum :status,
        { created: "created",
-         in_proccess: "in_process",
+         in_process: "in_process",
          attended: "attended",
          attended_by_program: "attended_by_program",
          rejected: "rejected" }

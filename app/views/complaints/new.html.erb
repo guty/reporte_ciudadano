@@ -106,13 +106,18 @@
               </div>
             </div>
           </div>
-          <div class="field is-horizontal">
+          <div class="field is-horizontal mt-5">
             <div class="field-label">
               <!-- Left empty for spacing -->
               <%= f.hidden_field :user_id, value: current_user.id %>
             </div>
             <div class="field-body">
-              <div class="field">
+              <div class="field is-grouped">
+                <div class="control">
+                  <%= link_to dashboards_url, class: "button is-light" do %>
+                    <i class="fas fa-chevron-circle-left" aria-hidden="true"> </i>&nbsp;Cancelar
+                  <% end %>
+                </div>
                 <div class="control">
                   <%= button_tag "Enviar", type: 'submit', form:"new_complaint", class: "button is-info", disable_with: 'Enviando...' do %>
                     <i class="fas fa-arrow-circle-right" aria-hidden="true"> </i>&nbsp;Enviar reporte
