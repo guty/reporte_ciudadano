@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-require 'test_helper'
+require "test_helper"
 
 class ComplaintsControllerTest < ActionDispatch::IntegrationTest
   include Devise::Test::IntegrationHelpers
@@ -10,12 +10,12 @@ class ComplaintsControllerTest < ActionDispatch::IntegrationTest
     @complaint = create(:complaint)
   end
 
-  test 'should get show' do
+  test "should get show" do
     get complaint_url(@complaint.id)
     assert_response :success
   end
 
-  test 'should get new' do
+  test "should get new" do
     get new_complaint_url
     assert_response :success
   end
