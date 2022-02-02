@@ -8,7 +8,7 @@ module ComplaintsHelper
                    rejected: 'is-danger' }.freeze
 
   def category_options_for(categories)
-    options_from_collection_for_select(categories, "id", "name")
+    options_from_collection_for_select(categories, 'id', 'name')
   end
 
   def status_name(status)

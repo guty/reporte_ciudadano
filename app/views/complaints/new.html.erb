@@ -106,7 +106,6 @@
               </div>
             </div>
           </div>
-          <<<<<<< HEAD
           <div class="field is-horizontal mt-5">
             <div class="field-label">
               <!-- Left empty for spacing -->
@@ -118,28 +117,19 @@
                     <i class="fas fa-chevron-circle-left" aria-hidden="true"> </i>&nbsp;Cancelar
                   <% end %>
                 </div>
-                =======
-                <div class="field is-horizontal">
-                  <div class="field-label">
-                    <!-- Left empty for spacing -->
-                    <%= f.hidden_field :user_id, value: current_user.id %>
-                  </div>
-                  <div class="field-body">
-                    <div class="field">
-                      >>>>>>> 18c5362 (Implemented proccess for creating new Complaints, changes on associations between complaints and dependencies, categories and dependencies; modified seeders and tests)
-                      <div class="control">
-                        <%= button_tag "Enviar", type: 'submit', form:"new_complaint", class: "button is-info", disable_with: 'Enviando...' do %>
-                          <i class="fas fa-arrow-circle-right" aria-hidden="true"> </i>&nbsp;Enviar reporte
-                        <% end %>
-                      </div>
-                    </div>
-                  </div>
+                <div class="control">
+                  <%= button_tag "Enviar", type: 'submit', form:"new_complaint", class: "button is-info", disable_with: 'Enviando...' do %>
+                    <i class="fas fa-arrow-circle-right" aria-hidden="true"> </i>&nbsp;Enviar reporte
+                  <% end %>
                 </div>
-              <% end %>
-            </div>
-            <div class="column is-8-mobile is-8-tablet is-3-desktop is-4-fullhd">
-              <%= image_tag 'complaint/new-complaint.jpg', alt: "Nuevo reporte ciudadano" %>
+              </div>
             </div>
           </div>
-        </div>
-      </section>
+        <% end %>
+      </div>
+      <div class="column is-8-mobile is-8-tablet is-3-desktop is-4-fullhd">
+        <%= image_tag 'complaint/new-complaint.jpg', alt: "Nuevo reporte ciudadano" %>
+      </div>
+    </div>
+  </div>
+</section>
