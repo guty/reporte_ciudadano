@@ -10,6 +10,6 @@ class ApplicationController < ActionController::Base
   end
 
   def after_sign_out_path_for(_scope)
-    root_path
+    :root
   end
 end

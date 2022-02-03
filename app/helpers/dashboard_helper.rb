@@ -6,21 +6,21 @@ module DashboardHelper
   end
 
   def number_of_created_complaints
-    total_complaints_by_status_per_user["created"] || 0
+    total_complaints_by_status_per_user['created'] || 0
   end
 
   def number_of_in_process_complaints
-    total_complaints_by_status_per_user["in_process"] || 0
+    total_complaints_by_status_per_user['in_process'] || 0
   end
 
   def number_of_attended_complaints
-    attended = total_complaints_by_status_per_user["attended"] || 0
-    attended_by_program = total_complaints_by_status_per_user["attended_by_program"] || 0
+    attended = total_complaints_by_status_per_user['attended'] || 0
+    attended_by_program = total_complaints_by_status_per_user['attended_by_program'] || 0
 
     attended + attended_by_program
   end
 
   def number_of_rejected_complaints
-    total_complaints_by_status_per_user["rejected"] || 0
+    total_complaints_by_status_per_user['rejected'] || 0
   end
 end
