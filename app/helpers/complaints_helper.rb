@@ -1,11 +1,11 @@
 # frozen_string_literal: true
 
 module ComplaintsHelper
-  STATUS_CSS = { created: "is-dark",
-                 in_process: "is-warning",
-                 attended: "is-info",
-                 attended_by_program: "is-info",
-                 rejected: "is-danger" }.freeze
+  STATUSES_CSS = { created: "is-dark",
+                   in_process: "is-warning",
+                   attended: "is-info",
+                   attended_by_program: "is-info",
+                   rejected: "is-danger" }.freeze
 
   def category_options_for(categories)
     options_from_collection_for_select(categories, "id", "name")
@@ -16,6 +16,6 @@ module ComplaintsHelper
   end
 
   def status_css(status)
-    STATUS_CSS[status.to_sym]
+    STATUSES_CSS[status.to_sym]
   end
 end

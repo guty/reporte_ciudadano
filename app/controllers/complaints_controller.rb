@@ -1,17 +1,15 @@
 # frozen_string_literal: true
 
 class ComplaintsController < AuthorizationsController
-  before_action :set_complaint, only: %i[show edit update destroy]
+  before_action :set_complaint, only: %i[edit update destroy]
   before_action :fetch_categories, only: %i[new create edit update]
 
   def index; end
 
   def show
-    if @complaint
-      @complaint = current_user.complaints.find(params[:id])
-    else
-      redirect_to dashboards_url, alert: "No se ha encontrado el reporte que estás buscando"
-    end
+    @complaint = current_user.complaints.find(params[:id])
+
+    redirect_to dashboards_url, alert: "No se ha encontrado el reporte que estás buscando" unless @complaint
   end
 
   def new
