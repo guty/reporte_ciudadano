@@ -3,7 +3,9 @@
     <div class="columns">
       <div class="column is-8-fullhd">
         <div class="mb-5">
-          <h2 class="is-size-3 has-text-info-dark mb-3"><%= @complaint.subject %></h2>
+          <span class="tag <%= status_css(@complaint.status) %> is-medium">
+            <%= status_name(@complaint.status) %></span>
+          <h2 class="is-size-3 has-text-info-dark mb-3"><%= @complaint.subject %> </h2>
           <% if @complaint.description %>
             <p class="subtitle">
               <%= @complaint.description %>
@@ -12,11 +14,10 @@
         </div>
         <div class="columns">
           <div class="column">
-            <p class="is-size-5"><strong>Categoría:</strong> <%= @complaint.category.name %></p>
+            <p class="is-size-5"><strong>Folio:</strong> <%= format_id(@complaint.id) %></p>
           </div>
           <div class="column">
-            <p class="bd-notification is-info"><span class="tag <%= status_css(@complaint.status) %> is-medium">
-                <%= status_name(@complaint.status) %></span></p>
+            <p class="is-size-5"><strong>Categoría:</strong> <%= @complaint.category.name %></p>
           </div>
         </div>
         <div class="columns">

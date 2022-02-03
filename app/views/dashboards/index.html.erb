@@ -3,25 +3,25 @@
   <div class="columns">
     <div class="column">
       <div class="box has-text-centered">
-        <span class="tag is-dark is-large"><%= @created %></span>
+        <span class="tag is-dark is-large"><%= complaints_created() %></span>
         <span class="subtitle"><strong>Nuevos</strong></span>
       </div>
     </div>
     <div class="column">
       <div class="box has-text-centered">
-        <span class="tag is-warning is-large"> <%= @in_process %> </span>
+        <span class="tag is-warning is-large"> <%= complaints_in_process() %> </span>
         <span class="subtitle"><strong>En proceso</strong></span>
       </div>
     </div>
     <div class="column">
       <div class="box has-text-centered">
-        <span class="tag is-success is-large"><%= @attended %></span>
+        <span class="tag is-success is-large"><%= complaints_attended() %></span>
         <span class="subtitle"><strong>Atendidos</strong></span>
       </div>
     </div>
     <div class="column">
       <div class="box has-text-centered">
-        <span class="tag is-danger is-large"><%= @rejected %></span>
+        <span class="tag is-danger is-large"><%= complaints_rejected() %></span>
         <span class="subtitle"><strong>Rechazados</strong></span>
       </div>
     </div>
