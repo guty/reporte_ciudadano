@@ -6,17 +6,15 @@ class ComplaintsControllerTest < ActionDispatch::IntegrationTest
   include Devise::Test::IntegrationHelpers
 
   def setup
-    sign_in FactoryBot.create(:user)
+    @user = FactoryBot.create(:user)
+    sign_in @user
+    @complaint = FactoryBot.create(:complaint, user: @user)
   end
-  # test 'should get index' do
-  #   get complaint_index_url
-  #   assert_response :success
-  # end
 
-  # test 'should get show' do
-  #   get complaint_show_url
-  #   assert_response :success
-  # end
+  test "should get show" do
+    get complaint_url(@complaint)
+    assert_response :success
+  end
 
   test "should get new" do
     get new_complaint_url

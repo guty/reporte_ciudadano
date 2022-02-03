@@ -11,10 +11,15 @@
       </span>
     </div>
     <div id="landingMenu" class="navbar-menu">
+      <div class="navbar-start">
+        <% if signed_in? %>
+          <%= link_to 'Inicio', dashboards_path, class: "navbar-item" %>
+        <% end %>
+      </div>
       <div class="navbar-end">
         <span class="navbar-item">
           <% if signed_in? %>
-            <%= link_to destroy_user_session_path, class: "button is-info is-inverted", 'data-turbo-method': :delete do %>
+            <%= button_to destroy_user_session_path, class: "button is-info is-inverted", method: :delete, data: { turbo: "false" } do %>
               <i class="fas fa-sign-out-alt" aria-hidden="true"></i>&nbsp;Cerrar sesión
             <% end %>
           <% else %>

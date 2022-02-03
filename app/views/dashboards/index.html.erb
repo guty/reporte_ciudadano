@@ -1,3 +1,89 @@
 <p style="color: green"><%= notice %></p>
-<h1>Dashboards</h1>
-<%= link_to "Nuevo reporte", new_complaint_path %>
+<section class="section">
+  <div class="columns">
+    <div class="column">
+      <div class="box has-text-centered">
+        <span class="tag is-dark is-large"><%= number_of_created_complaints() %></span>
+        <span class="subtitle"><strong>Nuevos</strong></span>
+      </div>
+    </div>
+    <div class="column">
+      <div class="box has-text-centered">
+        <span class="tag is-warning is-large"> <%= number_of_in_process_complaints() %> </span>
+        <span class="subtitle"><strong>En proceso</strong></span>
+      </div>
+    </div>
+    <div class="column">
+      <div class="box has-text-centered">
+        <span class="tag is-success is-large"><%= number_of_attended_complaints() %></span>
+        <span class="subtitle"><strong>Atendidos</strong></span>
+      </div>
+    </div>
+    <div class="column">
+      <div class="box has-text-centered">
+        <span class="tag is-danger is-large"><%= number_of_rejected_complaints() %></span>
+        <span class="subtitle"><strong>Rechazados</strong></span>
+      </div>
+    </div>
+  </div>
+</section>
+<section class="section">
+  <div class="columns">
+    <div class="column">
+      <%= form_with url: complaints_url, id:"find_complaint", method: :get do |f| %>
+        <div class="field has-addons">
+          <div class="control">
+            <input name="id" class="input" type="text" placeholder="Folio de reporte">
+          </div>
+          <div class="control">
+            <%= button_tag type: 'submit', form:"find_complaint", class: "button is-info", disable_with: 'Enviando...' do %>
+              <i class="fas fa-search" aria-hidden="true"> </i>&nbsp;Buscar
+            <% end %>
+          </div>
+        </div>
+      <% end %>
+    </div>
+    <div class="column">
+      <div class="control has-icons-left mt-1">
+        <%= link_to new_complaint_path, class: "button is-info" do %>
+          <i class="fas fa-file-alt" aria-hidden="true"> </i>&nbsp;Nuevo reporte
+        <% end %>
+      </div>
+    </div>
+  </div>
+</section>
+<section class="section">
+  <div class="container">
+    <p class="is-size-4"><strong>Mis reportes</strong></p>
+    <table class="table is-fullwidth is-hoverable">
+      <thead>
+        <tr>
+          <th id="id">Folio</th>
+          <th id="subject">Asunto</th>
+          <th id="status">Estatus</th>
+          <th id="category">Categoría</th>
+          <th id="dependency">Dependencia</th>
+          <th id="updated">Último movimiento</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% if !@complaints.blank? %>
+          <% for complaint in @complaints %>
+            <tr>
+              <td><%= link_to format_id(complaint.id), complaint_url(complaint) %></td>
+              <td><%= complaint.subject %></td>
+              <td><%= status_name(complaint.status) %></td>
+              <td><%= complaint.category.name %></td>
+              <td><%= complaint.category.dependency.name %></td>
+              <td><%= short_date_format(complaint.updated_at) %></td>
+            </tr>
+          <% end %>
+        <% else%>
+          <tr>
+            <td colspan="6"> Aún no has generado ningún reporte</td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+</section>
