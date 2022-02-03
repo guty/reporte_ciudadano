@@ -13,7 +13,7 @@ gem "bootsnap", require: false
 gem "devise"
 gem "image_processing", "~> 1.2"
 gem "pundit"
-gem "redis", "~> 4.0"
+gem "redis", "~> 4.6"
 # gem "kredis"
 
 gem "cssbundling-rails"
