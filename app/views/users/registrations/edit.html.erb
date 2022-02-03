@@ -1,43 +1,180 @@
-<h2>Edit <%= resource_name.to_s.humanize %></h2>
-
-<%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
-  <%= render "users/shared/error_messages", resource: resource %>
-
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
-  </div>
-
-  <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
-    <div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>
-  <% end %>
-
-  <div class="field">
-    <%= f.label :password %> <i>(leave blank if you don't want to change it)</i><br />
-    <%= f.password_field :password, autocomplete: "new-password" %>
-    <% if @minimum_password_length %>
-      <br />
-      <em><%= @minimum_password_length %> characters minimum</em>
+<section class="section">
+  <div class="container">
+    <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }, data: { turbo: false }) do |f| %>
+      <div class="columns">
+        <div class="column is-7-fullhd">
+          <div class="mb-5">
+            <h2 class="is-size-3 has-text-info-dark mb-3">Mi perfil</h2>
+          </div>
+          <%= render "users/shared/error_messages", resource: resource %>
+          <div class="field is-horizontal">
+            <div class="field-label is-normal">
+              <label class="label">Nombre</label>
+            </div>
+            <div class="field-body">
+              <div class="field">
+                <p class="control is-expanded has-icons-left">
+                  <%= f.text_field :name, class: "input" %>
+                  <span class="icon is-small is-left">
+                    <i class="fas fa-user" aria-hidden="true"></i>
+                  </span>
+                </p>
+              </div>
+            </div>
+          </div>
+          <div class="field is-horizontal">
+            <div class="field-label"></div>
+            <div class="field-body">
+              <div class="field">
+                <p class="control has-icons-left">
+                  <%= f.text_field :middle_name, class: "input" %>
+                  <span class="icon is-small is-left">
+                    <i class="fas fa-user" aria-hidden="true"></i>
+                  </span>
+                </p>
+              </div>
+              <div class="field">
+                <p class="control has-icons-left">
+                  <%= f.text_field :last_name, class: "input", placeholder: "Segundo apellido" %>
+                  <span class="icon is-small is-left">
+                    <i class="fas fa-user" aria-hidden="true"></i>
+                  </span>
+                </p>
+              </div>
+            </div>
+          </div>
+          <div class="field is-horizontal">
+            <div class="field-label is-normal">
+              <label class="label">Correo electrónico</label>
+            </div>
+            <div class="field-body">
+              <div class="field">
+                <p class="control is-expanded has-icons-left">
+                  <%= f.email_field :email, autocomplete: "email", class: "input" %>
+                  <span class="icon is-small is-left">
+                    <i class="fas fa-envelope" aria-hidden="true"></i>
+                  </span>
+                </p>
+              </div>
+            </div>
+          </div>
+          <div class="field is-horizontal">
+            <div class="field-label is-normal">
+              <label class="label">Contraseña</label><em class="help">(dejar vacío sino quieres cambiarla)</em>
+            </div>
+            <div class="field-body">
+              <div class="field">
+                <p class="control is-expanded has-icons-left">
+                  <%= f.password_field :password, autocomplete: "new-password", class: "input", placeholder: "Contraseña" %>
+                  <span class="icon is-small is-left">
+                    <i class="fas fa-lock" aria-hidden="true"></i>
+                  </span>
+                </p>
+                <% if @minimum_password_length %>
+                  <em class="help">(Mínimo <%= @minimum_password_length %> caracteres)</em>
+                <% end %>
+              </div>
+              <div class="field">
+                <p class="control is-expanded has-icons-left">
+                  <%= f.password_field :password_confirmation, autocomplete: "new-password", class: "input", placeholder: "Confirmar contraseña" %>
+                  <span class="icon is-small is-left">
+                    <i class="fas fa-lock" aria-hidden="true"></i>
+                  </span>
+                </p>
+              </div>
+            </div>
+          </div>
+          <div class="field is-horizontal">
+            <div class="field-label is-normal">
+              <label class="label">Teléfono</label>
+            </div>
+            <div class="field-body">
+              <div class="field is-expanded">
+                <div class="field has-addons">
+                  <p class="control">
+                    <a class="button is-static">
+                      +52
+                    </a>
+                  </p>
+                  <p class="control is-expanded">
+                    <%= f.text_field :mobile, class: "input", placeholder: "Num. de teléfono o celular" %>
+                  </p>
+                </div>
+                <em class="help">Ejemplo: 312 123 4567</em>
+              </div>
+            </div>
+          </div>
+          <div class="field is-horizontal">
+            <div class="field-label is-normal">
+              <label class="label">Imagen perfil</label>
+            </div>
+            <div class="field-body">
+              <div class="field is-expanded">
+                <% if current_user.avatar.present? %>
+                  <figure class="image is-128x128">
+                    <%= image_tag(current_user.avatar.variant(resize_to_fill: [100, 100])) %>
+                  </figure>
+                <% end %>
+                <div class="file is-info has-name">
+                  <label class="file-label">
+                    <%= f.file_field :avatar, class: "file-input" %>
+                    <span class="file-cta">
+                      <span class="file-icon">
+                        <i class="fas fa-cloud-upload-alt" aria-hidden="true"></i>
+                      </span>
+                      <span class="file-label">
+                        Subir…
+                      </span>
+                    </span>
+                    <span class="file-name">
+                    </span>
+                  </label>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="field is-horizontal">
+            <div class="field-label is-normal">
+              <label class="label">Contraseña actual</label>
+            </div>
+            <div class="field-body">
+              <div class="field">
+                <p class="control is-expanded has-icons-left">
+                  <%= f.password_field :current_password, autocomplete: "current-password", class: "input", placeholder: "Tu contraseña actual" %>
+                  <span class="icon is-small is-left">
+                    <i class="fas fa-lock" aria-hidden="true"></i>
+                  </span>
+                  <em class="help">(Es necesaria tu contraseña actual para confirmar tus cambios)</em>
+                </p>
+              </div>
+            </div>
+          </div>
+          <div class="field is-horizontal">
+            <div class="field-label">
+              <!-- Left empty for spacing -->
+            </div>
+            <div class="field-body">
+              <div class="field is-grouped">
+                <div class="control">
+                  <%= link_to dashboards_url, class: "button is-light" do %>
+                    <i class="fas fa-chevron-circle-left" aria-hidden="true"> </i>&nbsp;Cancelar
+                  <% end %>
+                </div>
+                <div class="control">
+                  <%= button_tag type: 'submit', form:"edit_user", class: "button is-info", disable_with: 'Actualizando...' do %>
+                    <em class="fas fa-user-edit"></em>&nbsp;Guardar cambios
+                  <% end %>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="column is-8-mobile is-8-tablet is-3-desktop is-5-fullhd">
+          <figure class="image">
+            <%= image_tag 'devise/profile.jpg', alt: "Mi perfil" %>
+          </figure>
+        </div>
+      </div>
     <% end %>
   </div>
-
-  <div class="field">
-    <%= f.label :password_confirmation %><br />
-    <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
-  </div>
-
-  <div class="field">
-    <%= f.label :current_password %> <i>(we need your current password to confirm your changes)</i><br />
-    <%= f.password_field :current_password, autocomplete: "current-password" %>
-  </div>
-
-  <div class="actions">
-    <%= f.submit "Update" %>
-  </div>
-<% end %>
-
-<h3>Cancel my account</h3>
-
-<p>Unhappy? <%= button_to "Cancel my account", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete %></p>
-
-<%= link_to "Back", :back %>
+</section>
