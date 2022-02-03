@@ -3,25 +3,25 @@
   <div class="columns">
     <div class="column">
       <div class="box has-text-centered">
-        <span class="tag is-dark is-large"><%= complaints_created() %></span>
+        <span class="tag is-dark is-large"><%= number_of_created_complaints() %></span>
         <span class="subtitle"><strong>Nuevos</strong></span>
       </div>
     </div>
     <div class="column">
       <div class="box has-text-centered">
-        <span class="tag is-warning is-large"> <%= complaints_in_process() %> </span>
+        <span class="tag is-warning is-large"> <%= number_of_in_process_complaints() %> </span>
         <span class="subtitle"><strong>En proceso</strong></span>
       </div>
     </div>
     <div class="column">
       <div class="box has-text-centered">
-        <span class="tag is-success is-large"><%= complaints_attended() %></span>
+        <span class="tag is-success is-large"><%= number_of_attended_complaints() %></span>
         <span class="subtitle"><strong>Atendidos</strong></span>
       </div>
     </div>
     <div class="column">
       <div class="box has-text-centered">
-        <span class="tag is-danger is-large"><%= complaints_rejected() %></span>
+        <span class="tag is-danger is-large"><%= number_of_rejected_complaints() %></span>
         <span class="subtitle"><strong>Rechazados</strong></span>
       </div>
     </div>
@@ -75,7 +75,7 @@
               <td><%= status_name(complaint.status) %></td>
               <td><%= complaint.category.name %></td>
               <td><%= complaint.category.dependency.name %></td>
-              <td><%= date_format(complaint.updated_at) %></td>
+              <td><%= short_date_format(complaint.updated_at) %></td>
             </tr>
           <% end %>
         <% else%>

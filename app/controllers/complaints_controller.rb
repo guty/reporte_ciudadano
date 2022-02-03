@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 class ComplaintsController < AuthorizationsController
-  before_action :set_complaint, only: %i[show edit update destroy]
+  before_action :set_complaint, only: %i[edit update destroy]
   before_action :fetch_categories, only: %i[new create edit update]
 
   def index; end
@@ -10,7 +10,7 @@ class ComplaintsController < AuthorizationsController
     if @complaint
       @complaint = current_user.complaints.find(params[:id])
     else
-      redirect_to dashboards_url, alert: "No se ha encontrado el reporte que estás buscando"
+      redirect_to dashboards_url, alert: 'No se ha encontrado el reporte que estás buscando'
     end
   end
 
@@ -23,7 +23,7 @@ class ComplaintsController < AuthorizationsController
     @complaint.created!
 
     if @complaint.save
-      redirect_to complaint_url(@complaint), notice: "Ha sido generado y enviado exitosamente tu reporte."
+      redirect_to complaint_url(@complaint), notice: 'Ha sido generado y enviado exitosamente tu reporte.'
     else
       render :new, status: :unprocessable_entity
     end
