@@ -10,8 +10,8 @@ module ImagesHelper
         image_tag(image, type: :upload, width: image_params[:width], height: image_params[:height], gravity: 'faces',
                          crop: :thumb, class: image_params[:class])
       else
-        image_tag(image, type: :upload, width: image_params[:width], height: image_params[:height], crop: :fill,
-                         class: image_params[:class])
+        image_tag(image.key, type: :upload, width: image_params[:width], height: image_params[:height], crop: :fill,
+                             class: image_params[:class])
       end
     end
   end
