@@ -1,4 +1,3 @@
-<p style="color: green"><%= notice %></p>
 <section class="section">
   <div class="columns">
     <div class="column">
@@ -30,7 +29,7 @@
 <section class="section">
   <div class="columns">
     <div class="column">
-      <%= form_with url: complaints_url, id:"find_complaint", method: :get do |f| %>
+      <%= form_with url: complaints_search_path, id:"find_complaint", method: :get do |f| %>
         <div class="field has-addons">
           <div class="control">
             <input name="id" class="input" type="text" placeholder="Folio de reporte">
