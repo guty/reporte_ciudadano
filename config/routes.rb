@@ -6,6 +6,9 @@ Rails.application.routes.draw do
   }
   root "landing#index"
 
+  namespace :complaints do
+    get "/search", to: "search#index", as: "search"
+  end
   resources :dashboards, path: "ciudadano", only: [:index]
   resources :complaints
 
