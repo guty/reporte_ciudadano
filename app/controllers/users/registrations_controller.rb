@@ -16,7 +16,7 @@ module Users
     end
 
     def after_sign_up_path_for(_resource)
-      :root
+      :dashboards
     end
 
     def after_update_path_for(_resource)
