@@ -6,4 +6,5 @@ Cloudinary.config do |config|
   config.secret_access_key = Rails.application.credentials.dig(:cloudinary, :api_secret)
   config.secure = true
   config.cdn_subdomain = true
+  config.enhance_image_tag = true
 end
