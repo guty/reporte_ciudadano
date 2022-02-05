@@ -2,7 +2,6 @@
 
 module ImagesHelper
   def display_image(image, image_params)
-    # binding.break
     return image_tag(image.key, image_params) if Rails.env.production?
 
     if image_params[:height]
