@@ -31,6 +31,16 @@
       </div>
       <div class="columns">
         <div class="column">
+          <p class="is-size-5"><strong>Fotos:</strong></p>
+          <% if @complaint.images
+            @complaint.images.each do |image| %>
+            <%= display_image(image, type: :upload, width: 0.40, crop: "scale", quality: "auto", gravity: "auto", size: [150,150]) %>
+          <% end
+          end %>
+        </div>
+      </div>
+      <div class="columns">
+        <div class="column">
           <p class="is-size-5"><strong>Ubicación:</strong>
             <%= link_to "#", class: "button is-info is-light" do %>
               <i class="fas fa-map-marker-alt" aria-hidden="true"> </i>&nbsp;Ver en mapa

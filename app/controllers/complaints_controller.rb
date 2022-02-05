@@ -45,6 +45,6 @@ class ComplaintsController < AuthorizationsController
 
   def complaint_params
     params.require(:complaint).permit(:user_id, :category_id, :subject, :description, :address, :neighbourhood, :town,
-                                      :latitude, :longitude)
+                                      :latitude, :longitude, images: [])
   end
 end

@@ -9,7 +9,7 @@
             especificar el<strong> problema</strong> y la <strong>ubicación exacta</strong> del mismo.
           </p>
         </div>
-        <%= form_with model: @complaint, id: "new_complaint" do |f| %>
+        <%=form_with model: @complaint, id: "new_complaint" do |f| %>
           <% if @complaint.errors.any? %>
             <%= @complaint.errors.full_messages%>
           <% end %>
@@ -102,6 +102,30 @@
                   <%= link_to "#", class: "button is-info is-light" do %>
                     <i class="fas fa-map-marker-alt" aria-hidden="true"> </i>&nbsp;Ubicar en mapa
                   <% end %>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="field is-horizontal">
+            <div class="field-label is-normal">
+              <label class="label">Fotos</label>
+            </div>
+            <div class="field-body">
+              <div class="field">
+                <div class="file is-info has-name">
+                  <label class="file-label">
+                    <%= f.file_field :images, multiple: true, class: "file-input" %>
+                    <span class="file-cta">
+                      <span class="file-icon">
+                        <i class="fas fa-cloud-upload-alt" aria-hidden="true"></i>
+                      </span>
+                      <span class="file-label">
+                        Subir…
+                      </span>
+                    </span>
+                    <span class="file-name">
+                    </span>
+                  </label>
                 </div>
               </div>
             </div>
