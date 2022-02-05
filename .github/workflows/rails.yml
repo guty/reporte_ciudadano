@@ -76,7 +76,7 @@ jobs:
         POSTGRES_PORT: ${{ job.services.postgres.ports[5432] }}
       run: |
         bundle exec rails assets:precompile
-        bundle exec rails test
+        RAILS_ENV=test bundle exec rails test
 
   lint:
     runs-on: ubuntu-latest
