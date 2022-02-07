@@ -11,15 +11,12 @@ module ImagesHelper
   private
 
   def image_params_for(image_params)
-    params = { class: image_params[:class] } || {}
+    params = { alt: image_params[:alt] }
+    params[:class] = image_params[:class] if image_params[:class]
 
-    return params if Rails.env.development?
+    return params if Rails.env.development? || Rails.env.test?
 
-    params.merge!({ width: image_params[:width], type: image_params[:type], crop: image_params[:crop],
-                    quality: image_params[:quality], gravity: image_params[:gravity] })
-    params[:height] = image_params[:height] if image_params[:height]
-
-    params
+    image_params
   end
 
   def image_for(image, image_params)

@@ -12,13 +12,11 @@ class ComplaintsControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "should get show" do
-    skip
     get complaint_url(@complaint)
     assert_response :success
   end
 
   test "should get new" do
-    skip
     get new_complaint_url
     assert_response :success
   end

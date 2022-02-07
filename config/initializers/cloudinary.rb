@@ -7,4 +7,5 @@ Cloudinary.config do |config|
   config.secure = true
   config.cdn_subdomain = true
   config.enhance_image_tag = true
+  config.static_file_support = true
 end
