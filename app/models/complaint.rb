@@ -6,12 +6,12 @@ class Complaint < ApplicationRecord
   belongs_to :category
   has_many_attached :images
   has_many_attached :evidences
-  has_one :dependency, through: :category
+  delegate :dependency, to: :category
 
   enum :status,
-       { created: 'created',
-         in_process: 'in_process',
-         attended: 'attended',
-         attended_by_program: 'attended_by_program',
-         rejected: 'rejected' }
+       { created: "created",
+         in_process: "in_process",
+         attended: "attended",
+         attended_by_program: "attended_by_program",
+         rejected: "rejected" }
 end

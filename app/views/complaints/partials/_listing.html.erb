@@ -13,7 +13,7 @@
         </tr>
       </thead>
       <tbody>
-        <% if !@complaints.blank? %>
+        <% if @complaints %>
           <% for complaint in @complaints %>
             <tr>
               <td><%= link_to format_id(complaint.id), complaint_url(complaint) %></td>
