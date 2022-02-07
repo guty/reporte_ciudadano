@@ -42,29 +42,16 @@
       <div class="columns">
         <div class="column">
           <p class="is-size-5"><strong>Ubicación:</strong>
-            <%= link_to "#", class: "button is-info is-light" do %>
+            <%= button_tag "#", disable: 'disable', class: "button is-info is-light" do %>
               <i class="fas fa-map-marker-alt" aria-hidden="true"> </i>&nbsp;Ver en mapa
             <% end %>
           </p>
         </div>
       </div>
-      <div class="field is-horizontal">
-        <div class="field-label">
-          <!-- Left empty for spacing -->
-        </div>
-        <div class="field-body">
-          <div class="field">
-            <div class="control">
-              <%= link_to dashboards_url, class: "button is-light" do %>
-                <i class="fas fa-chevron-circle-left" aria-hidden="true"> </i>&nbsp;Regresar
-              <% end %>
-            </div>
-          </div>
-        </div>
-      </div>
+      <%= render "complaints/partials/buttons"%>
     </div>
     <div class="column is-8-mobile is-8-tablet is-3-desktop is-4-fullhd">
-      <%= image_tag 'complaint/new-complaint.jpg', alt: "Nuevo reporte ciudadano" %>
+      <%= image_tag 'complaint/complaint-detail.jpg', alt: "Detalle de reporte" %>
     </div>
   </div>
 </div>
