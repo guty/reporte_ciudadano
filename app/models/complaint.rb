@@ -5,6 +5,8 @@ class Complaint < ApplicationRecord
   belongs_to :user
   belongs_to :category
   has_many_attached :images
+  has_many_attached :evidences
+  has_one :dependency, through: :category
 
   enum :status,
        { created: "created",
