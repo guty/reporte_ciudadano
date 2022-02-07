@@ -74,6 +74,7 @@ jobs:
         POSTGRES_USER: postgres
         POSTGRES_PASSWORD: postgres
         POSTGRES_PORT: ${{ job.services.postgres.ports[5432] }}
+        cloud_name: hhc94eiao
       run: |
         bundle exec rails assets:precompile
         bundle exec rails test
