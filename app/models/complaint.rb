@@ -4,6 +4,7 @@ class Complaint < ApplicationRecord
   validates :subject, :address, :neighbourhood, :town, presence: true
   belongs_to :user
   belongs_to :category
+  has_many_attached :images
 
   enum :status,
        { created: "created",
