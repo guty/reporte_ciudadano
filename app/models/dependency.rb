@@ -3,5 +3,4 @@
 class Dependency < ApplicationRecord
   has_many :categories, dependent: :nullify
   has_many :users, dependent: :nullify
-  has_many :complaints, through: :category
 end

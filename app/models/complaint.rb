@@ -6,7 +6,7 @@ class Complaint < ApplicationRecord
   belongs_to :category
   has_many_attached :images
   has_many_attached :evidences
-  has_one :dependency, through: :category
+  delegate :dependency, to: :category
 
   enum :status,
        { created: "created",

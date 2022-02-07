@@ -4,7 +4,6 @@ class DashboardsController < AuthorizationsController
   def index
     return @complaints = current_user.complaints.all if current_user.citizen?
 
-    dependency_categories = Category.where(dependency: current_user.dependency)
-    @complaints = Complaint.joins(:category).where(categories: dependency_categories)
+    @complaints = Complaint.where(category_id: current_user.dependency.categories.pluck(:id))
   end
 end

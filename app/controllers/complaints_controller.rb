@@ -32,11 +32,13 @@ class ComplaintsController < AuthorizationsController
   private
 
   def set_complaint
-    return current_user.complaints.find(params[:id]) if current_user.citizen?
+    return @complaint = current_user.complaints.find(params[:id]) if current_user.citizen?
 
-    return current_user.dependency.complaints.find(params[:id]) if current_user.director? || current_user.employee?
+    if current_user.director? || current_user.employee?
+      return @complaint = Complaint.where(category_id: current_user.dependency.categories.pluck(:id)).find(params[:id])
+    end
 
-    Complaint.find(params[:id])
+    @complaint = Complaint.find(params[:id])
   end
 
   def fetch_categories
