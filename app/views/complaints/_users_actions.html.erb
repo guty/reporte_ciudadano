@@ -14,7 +14,7 @@
               <i class="fas fa-folder-open" aria-hidden="true"> </i>&nbsp;Recibir
             <% end %>
           <% end %>
-          <% if @complaint.in_process? %>
+          <% if @complaint.created? %>
             <%= link_to dashboards_url, class: "button is-success" do %>
               <i class="fas fa-check-circle" aria-hidden="true"> </i>&nbsp;Atender
             <% end %>
