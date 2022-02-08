@@ -6,7 +6,9 @@ class ComplaintsController < AuthorizationsController
 
   def index; end
 
-  def show; end
+  def show
+    redirect_to dashboards_url, alert: "No se encontró el registro que buscas" unless @complaint
+  end
 
   def new
     @complaint = Complaint.new
@@ -32,13 +34,17 @@ class ComplaintsController < AuthorizationsController
   private
 
   def set_complaint
-    return @complaint = current_user.complaints.find(params[:id]) if current_user.citizen?
+    @complaint = complaint_scope.find_by(id: params[:id])
+  end
+
+  def complaint_scope
+    return current_user.complaints if current_user.citizen?
 
     if current_user.director? || current_user.employee?
-      return @complaint = Complaint.where(category_id: current_user.dependency.categories.pluck(:id)).find(params[:id])
+      return Complaint.where(category_id: current_user.dependency.categories.pluck(:id))
     end
 
-    @complaint = Complaint.find(params[:id])
+    Complaint
   end
 
   def fetch_categories

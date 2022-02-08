@@ -19,13 +19,13 @@ module DashboardHelper
   def number_of_rejected_complaints
     total_complaints_by_status["rejected"] || 0
   end
-end
 
-private
+  private
 
-def total_complaints_by_status
-  return @total_complaints_by_status ||= current_user.complaints.group(:status).size if current_user.citizen?
+  def total_complaints_by_status
+    return @total_complaints_by_status ||= current_user.complaints.group(:status).size if current_user.citizen?
 
-  dep_categories = Category.where(dependency: current_user.dependency)
-  @total_complaints_by_status ||= Complaint.joins(:category).where(categories: dep_categories).group(:status).size
+    dep_categories = Category.where(dependency: current_user.dependency)
+    @total_complaints_by_status ||= Complaint.joins(:category).where(categories: dep_categories).group(:status).size
+  end
 end

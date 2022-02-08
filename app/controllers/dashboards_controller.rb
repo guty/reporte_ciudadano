@@ -2,8 +2,14 @@
 
 class DashboardsController < AuthorizationsController
   def index
-    return @complaints = current_user.complaints.all if current_user.citizen?
+    @complaints = find_complaints
+  end
 
-    @complaints = Complaint.where(category_id: current_user.dependency.categories.pluck(:id))
+  private
+
+  def find_complaints
+    return current_user.complaints.all if current_user.citizen?
+
+    Complaint.where(category_id: current_user.dependency.categories.pluck(:id))
   end
 end
