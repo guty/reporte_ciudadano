@@ -51,38 +51,4 @@
     </div>
   </div>
 </section>
-<section class="section">
-  <div class="container">
-    <p class="is-size-4"><strong>Mis reportes</strong></p>
-    <table class="table is-fullwidth is-hoverable">
-      <thead>
-        <tr>
-          <th id="id">Folio</th>
-          <th id="subject">Asunto</th>
-          <th id="status">Estatus</th>
-          <th id="category">Categoría</th>
-          <th id="dependency">Dependencia</th>
-          <th id="updated">Último movimiento</th>
-        </tr>
-      </thead>
-      <tbody>
-        <% if !@complaints.blank? %>
-          <% for complaint in @complaints %>
-            <tr>
-              <td><%= link_to format_id(complaint.id), complaint_url(complaint) %></td>
-              <td><%= complaint.subject %></td>
-              <td><%= status_name(complaint.status) %></td>
-              <td><%= complaint.category.name %></td>
-              <td><%= complaint.category.dependency.name %></td>
-              <td><%= short_date_format(complaint.updated_at) %></td>
-            </tr>
-          <% end %>
-        <% else%>
-          <tr>
-            <td colspan="6"> Aún no has generado ningún reporte</td>
-          </tr>
-        <% end %>
-      </tbody>
-    </table>
-  </div>
-</section>
+<%= render "dashboards/complaints_listing" %>

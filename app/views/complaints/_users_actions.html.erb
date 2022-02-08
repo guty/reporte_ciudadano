@@ -1,0 +1,34 @@
+<div class="field is-horizontal">
+  <div class="field-label">
+    <!-- Left empty for spacing -->
+  </div>
+  <div class="field-body">
+    <div class="field">
+      <div class="buttons">
+        <%= link_to dashboards_url, class: "button is-light" do %>
+          <i class="fas fa-chevron-circle-left" aria-hidden="true"> </i>&nbsp;Regresar
+        <% end %>
+        <% if current_user.employee? %>
+          <% if @complaint.created? %>
+            <%= link_to dashboards_url, class: "button is-info" do %>
+              <i class="fas fa-folder-open" aria-hidden="true"> </i>&nbsp;Recibir
+            <% end %>
+          <% end %>
+          <% if @complaint.created? %>
+            <%= link_to dashboards_url, class: "button is-success" do %>
+              <i class="fas fa-check-circle" aria-hidden="true"> </i>&nbsp;Atender
+            <% end %>
+            <%= link_to dashboards_url, class: "button is-success" do %>
+              <i class="fas fa-calendar-check" aria-hidden="true"> </i>&nbsp;Atender por programa
+            <% end %>
+          <% end %>
+          <% unless @complaint.attended? || @complaint.attended_by_program? %>
+            <%= link_to dashboards_url, class: "button is-danger" do %>
+              <i class="fas fa-times-circle" aria-hidden="true"> </i>&nbsp;Rechazar
+            <% end %>
+          <% end %>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>
