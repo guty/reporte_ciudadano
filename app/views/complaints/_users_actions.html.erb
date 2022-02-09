@@ -10,19 +10,19 @@
         <% end %>
         <% if current_user.employee? %>
           <% if @complaint.created? %>
-            <%= link_to dashboards_url, class: "button is-info" do %>
+            <%= button_to complaint_status_path(@complaint, 'process'), method: :put, class: "button is-info" do %>
               <i class="fas fa-folder-open" aria-hidden="true"> </i>&nbsp;Recibir
             <% end %>
           <% end %>
-          <% if @complaint.created? %>
-            <%= link_to dashboards_url, class: "button is-success" do %>
+          <% if @complaint.in_process? %>
+            <%= button_tag type: 'submit', form:"process_complaint", class: "button is-success", disable_with: 'Procesando...' do %>
               <i class="fas fa-check-circle" aria-hidden="true"> </i>&nbsp;Atender
             <% end %>
-            <%= link_to dashboards_url, class: "button is-success" do %>
+            <%= button_tag type: 'submit', form:"process_complaint", class: "button is-success", disable_with: 'Procesando...' do %>
               <i class="fas fa-calendar-check" aria-hidden="true"> </i>&nbsp;Atender por programa
             <% end %>
           <% end %>
-          <% unless @complaint.attended? || @complaint.attended_by_program? %>
+          <% if @complaint.created? %>
             <%= link_to dashboards_url, class: "button is-danger" do %>
               <i class="fas fa-times-circle" aria-hidden="true"> </i>&nbsp;Rechazar
             <% end %>

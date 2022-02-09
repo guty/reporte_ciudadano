@@ -18,9 +18,9 @@ require:
 Style/Documentation:
   Enabled: false
 
-Style/StringLiterals:
-  Enabled: true
-  EnforcedStyle: double_quotes
+# Style/StringLiterals:
+#   Enabled: true
+#   EnforcedStyle: double_quotes
 
 Style/StringLiteralsInInterpolation:
   Enabled: true
@@ -31,6 +31,7 @@ Style/ClassAndModuleChildren:
     - test/**/*.rb
 
 Metrics/BlockLength:
+  Max: 18
   Exclude:
     - config/environments/*.rb
     - config/routes.rb

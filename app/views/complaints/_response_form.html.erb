@@ -1,0 +1,46 @@
+<% if current_user.employee? %>
+  <% if @complaint.in_process? %>
+    <div class="columns">
+      <div class="column">
+        <%= form_with url: complaint_status_path(@complaint, 'attend'), method: :put, id: 'process_complaint', data: { turbo: false } do |f| %>
+          <div class="field is-horizontal">
+            <div class="field-label is-normal">
+              <label class="label">Respuesta</label>
+            </div>
+            <div class="field-body">
+              <div class="field">
+                <div class="control">
+                  <%= f.text_area :response, class: "textarea", placeholder: "Resúmen de las actividades realizadas" %>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="field is-horizontal">
+            <div class="field-label is-normal">
+              <label class="label">Evidencias</label>
+            </div>
+            <div class="field-body">
+              <div class="field">
+                <div class="file is-info has-name">
+                  <label class="file-label">
+                    <%= f.file_field :evidences, multiple: true, class: "file-input" %>
+                    <span class="file-cta">
+                      <span class="file-icon">
+                        <i class="fas fa-cloud-upload-alt" aria-hidden="true"></i>
+                      </span>
+                      <span class="file-label">
+                        Subir…
+                      </span>
+                    </span>
+                    <span class="file-name">
+                    </span>
+                  </label>
+                </div>
+              </div>
+            </div>
+          </div>
+        <% end %>
+      </div>
+    </div>
+  <% end %>
+<% end %>
