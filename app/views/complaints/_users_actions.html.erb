@@ -1,33 +1,35 @@
-<div class="field is-horizontal">
-  <div class="field-label">
-    <!-- Left empty for spacing -->
-  </div>
-  <div class="field-body">
-    <div class="field">
-      <div class="buttons">
-        <%= link_to dashboards_url, class: "button is-light" do %>
-          <i class="fas fa-chevron-circle-left" aria-hidden="true"> </i>&nbsp;Regresar
-        <% end %>
-        <% if current_user.employee? %>
-          <% if @complaint.created? %>
-            <%= button_to complaint_status_path(@complaint, 'process'), method: :put, class: "button is-info" do %>
-              <i class="fas fa-folder-open" aria-hidden="true"> </i>&nbsp;Recibir
+<div class="columns">
+  <div class="column">
+    <div class="field is-horizontal">
+      <div class="field-label">
+        <!-- Left empty for spacing -->
+      </div>
+      <div class="field-body">
+        <div class="field">
+          <div class="buttons">
+            <%= link_to dashboards_url, class: "button is-light" do %>
+              <i class="fas fa-chevron-circle-left" aria-hidden="true"> </i>&nbsp;Regresar
             <% end %>
-          <% end %>
-          <% if @complaint.in_process? %>
-            <%= button_tag type: 'submit', form:"process_complaint", class: "button is-success", disable_with: 'Procesando...' do %>
-              <i class="fas fa-check-circle" aria-hidden="true"> </i>&nbsp;Atender
+            <% if current_user.employee? %>
+              <% if @complaint.created? %>
+                <%= button_to complaint_status_path(@complaint, 'process'), method: :put, class: "button is-info" do %>
+                  <i class="fas fa-folder-open" aria-hidden="true"> </i>&nbsp;Recibir
+                <% end %>
+                <%= button_tag type: 'submit', form:"process_complaint", name: "evento", value: "reject", class: "button is-danger", disable_with: 'Procesando...' do %>
+                  <i class="fas fa-times-circle" aria-hidden="true"> </i>&nbsp;Rechazar
+                <% end %>
+              <% end %>
+              <% if @complaint.in_process? %>
+                <%= button_tag type: 'submit', form:"process_complaint", name: "evento", value: "attend", class: "button is-success", disable_with: 'Procesando...' do %>
+                  <i class="fas fa-check-circle" aria-hidden="true"> </i>&nbsp;Atender
+                <% end %>
+                <%= button_tag type: 'submit', form:"process_complaint", name: "evento", value: "attend_program", class: "button is-success", disable_with: 'Procesando...' do %>
+                  <i class="fas fa-calendar-check" aria-hidden="true"> </i>&nbsp;Atender por programa
+                <% end %>
+              <% end %>
             <% end %>
-            <%= button_tag type: 'submit', form:"process_complaint", class: "button is-success", disable_with: 'Procesando...' do %>
-              <i class="fas fa-calendar-check" aria-hidden="true"> </i>&nbsp;Atender por programa
-            <% end %>
-          <% end %>
-          <% if @complaint.created? %>
-            <%= link_to dashboards_url, class: "button is-danger" do %>
-              <i class="fas fa-times-circle" aria-hidden="true"> </i>&nbsp;Rechazar
-            <% end %>
-          <% end %>
-        <% end %>
+          </div>
+        </div>
       </div>
     </div>
   </div>

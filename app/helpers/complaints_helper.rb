@@ -3,8 +3,8 @@
 module ComplaintsHelper
   STATUSES_CSS = { created: "is-dark",
                    in_process: "is-warning",
-                   attended: "is-info",
-                   attended_by_program: "is-info",
+                   attended: "is-success",
+                   attended_by_program: "is-success",
                    rejected: "is-danger" }.freeze
 
   def category_options_for(categories)

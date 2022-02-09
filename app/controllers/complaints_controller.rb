@@ -7,7 +7,7 @@ class ComplaintsController < AuthorizationsController
   def index; end
 
   def show
-    redirect_to dashboards_url, alert: 'No se encontró el registro que buscas' unless @complaint
+    redirect_to dashboards_url, alert: "No se encontró el registro que buscas" unless @complaint
   end
 
   def new
@@ -19,7 +19,7 @@ class ComplaintsController < AuthorizationsController
     @complaint.created!
 
     if @complaint.save
-      redirect_to complaint_url(@complaint), notice: 'Ha sido generado y enviado exitosamente tu reporte.'
+      redirect_to complaint_url(@complaint), notice: "Ha sido generado y enviado exitosamente tu reporte."
     else
       render :new, status: :unprocessable_entity
     end
@@ -30,7 +30,7 @@ class ComplaintsController < AuthorizationsController
   def update
     @complaint.update(complaint_params)
 
-    redirect_to complaint_url(@complaint), notice: 'Ha sido aplicada la transacción de forma exitosa'
+    redirect_to complaint_url(@complaint), notice: "Ha sido aplicada la transacción de forma exitosa"
   end
 
   def destroy; end

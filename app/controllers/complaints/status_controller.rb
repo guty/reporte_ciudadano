@@ -5,17 +5,19 @@ module Complaints
     before_action :set_complaint
 
     def update
-      if @complaint.send(params[:event]) && @complaint.update(complaint_params)
-        redirect_to complaint_path(@complaint), notice: 'Acción realizada satisfactoriamente'
+      evento = params[:evento].presence || params[:event]
+
+      if @complaint.send(evento) && @complaint.update(complaint_params)
+        redirect_to complaint_path(@complaint), notice: "Acción realizada satisfactoriamente"
       else
-        redirect_to complaint_path(@complaint), alert: 'No fue posible realizar la acción'
+        redirect_to complaint_path(@complaint), alert: "No fue posible realizar la acción"
       end
     end
 
     private
 
     def complaint_params
-      params.permit(:response, :evidences)
+      params.permit(:response, evidences: [])
     end
 
     def set_complaint
