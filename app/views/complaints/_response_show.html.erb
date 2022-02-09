@@ -1,0 +1,33 @@
+<% if @complaint.rejected? || @complaint.attended? || @complaint.attended_by_program? %>
+  <% if @complaint.rejected? %>
+    <div class="column">
+      <article class="message is-danger">
+        <div class="message-header">
+          <p>Justificación</p>
+        </div>
+        <div class="message-body">
+          <%= @complaint.response %>
+        </div>
+      </article>
+    </div>
+  <% end %>
+  <% if  @complaint.attended? || @complaint.attended_by_program? %>
+    <div class="column">
+      <article class="message is-success">
+        <div class="message-header">
+          <p>Acciones realizadas</p>
+        </div>
+        <section class="message-body">
+          <%= @complaint.response %>
+        </section>
+      </article>
+    </div>
+    <%if @complaint.evidences%>
+      <div class="column">
+        <% @complaint.evidences.each do |image| %>
+          <%= display_image(image, type: :upload, width: 0.40, crop: "scale", quality: "auto", gravity: "auto", size: [150,150]) %>
+        <% end %>
+      </div>
+    <%end %>
+  <% end %>
+<% end %>
