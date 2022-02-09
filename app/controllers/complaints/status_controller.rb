@@ -8,9 +8,9 @@ module Complaints
       evento = params[:evento].presence || params[:event]
 
       if @complaint.send(evento) && @complaint.update(complaint_params)
-        redirect_to complaint_path(@complaint), notice: "Acción realizada satisfactoriamente"
+        redirect_to complaint_path(@complaint), notice: 'Acción realizada satisfactoriamente'
       else
-        redirect_to complaint_path(@complaint), alert: "No fue posible realizar la acción"
+        redirect_to complaint_path(@complaint), alert: 'No fue posible realizar la acción'
       end
     end
 
