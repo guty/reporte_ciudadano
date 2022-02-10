@@ -5,7 +5,7 @@ module Complaints
     before_action :set_complaint
 
     def update
-      evento = params[:evento].presence || params[:event]
+      evento = params[:form_event].presence || params[:event]
 
       if @complaint.send(evento) && @complaint.update(complaint_params)
         redirect_to complaint_path(@complaint), notice: "Acción realizada satisfactoriamente"
@@ -21,7 +21,9 @@ module Complaints
     end
 
     def set_complaint
-      @complaint = complaint_scope.find_by(id: params[:complaint_id])
+      @complaint = complaint_scope.find(id: params[:complaint_id])
+
+      redirect_to dashboards_url, alert: "No fue posible localizar el reporte" unless @complaint
     end
 
     def complaint_scope

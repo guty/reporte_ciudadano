@@ -7,7 +7,7 @@ class ComplaintsController < AuthorizationsController
   def index; end
 
   def show
-    redirect_to dashboards_url, alert: "No se encontró el registro que buscas" unless @complaint
+    redirect_to dashboards_url, alert: "No se encontró el reporte que buscas" unless @complaint
   end
 
   def new
