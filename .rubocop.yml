@@ -31,6 +31,7 @@ Style/ClassAndModuleChildren:
     - test/**/*.rb
 
 Metrics/BlockLength:
+  Max: 18
   Exclude:
     - config/environments/*.rb
     - config/routes.rb

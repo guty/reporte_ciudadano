@@ -8,6 +8,7 @@ gem "pg", "~> 1.3"
 gem "puma", "~> 5.6"
 gem "rails", "~> 7.0.1"
 
+gem "aasm"
 gem "bootsnap", require: false
 gem "cloudinary"
 gem "devise"
