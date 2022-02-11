@@ -17,7 +17,7 @@ class ComplaintsController < AuthorizationsController
     @complaint.created!
 
     if @complaint.save
-      SendComplaintNotification.initialize(@complaint).perform
+      SendComplaintNotification.new(@complaint).call
       redirect_to complaint_url(@complaint), notice: "Ha sido generado y enviado exitosamente tu reporte."
     else
       render :new, status: :unprocessable_entity
