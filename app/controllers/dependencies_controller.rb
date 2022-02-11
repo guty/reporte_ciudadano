@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-class DependenciesController < ApplicationController
+class DependenciesController < AuthorizationsController
   before_action :set_dependency, only: %i[show edit update destroy]
 
   # GET /dependencies or /dependencies.json

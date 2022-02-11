@@ -1,0 +1,33 @@
+<section class="section">
+  <div class="container">
+    <p class="is-size-4"><strong>Usuarios registrados</strong></p>
+    <table class="table is-fullwidth is-hoverable">
+      <thead>
+        <tr>
+          <th id="name">Nombre</th>
+          <th id="name">Email</th>
+          <th id="status">Perfil</th>
+          <th id="category">Activo</th>
+          <th id="updated">Acciones</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% if @users %>
+          <% for user in @users %>
+            <tr>
+              <td><%= "#{user.name} #{user.middle_name} #{user.last_name}" %></td>
+              <td><%= user.email %></td>
+              <td><%= role_name(user.role) %></td>
+              <td><%= user.activated_at ? 'Inactivo' : 'Activo' %></td>
+              <td><%= link_to "Ver", user_profile_path(user.id) %></td>
+            </tr>
+          <% end %>
+        <% else%>
+          <tr>
+            <td colspan="4">No hay usuarios registrados</td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+</section>

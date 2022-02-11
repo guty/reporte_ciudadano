@@ -4,7 +4,9 @@ class ApplicationController < ActionController::Base
   include Pundit
 
   def after_sign_in_path_for(_resource)
-    :dashboards
+    return :dashboards unless current_user.admin?
+
+    users_index_url
   end
 
   def after_sign_out_path_for(_scope)
