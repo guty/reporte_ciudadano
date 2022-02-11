@@ -16,6 +16,7 @@ module ImagesHelper
 
     return params if Rails.env.development? || Rails.env.test?
 
+    image_params.delete(:size)
     image_params
   end
 
