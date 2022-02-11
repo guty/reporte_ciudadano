@@ -1,0 +1,20 @@
+<nav class="bd-navbar navbar">
+  <div class="container">
+    <div class="navbar-brand">
+      <span class="navbar-burger" data-target="landingMenu">
+        <span></span>
+        <span></span>
+        <span></span>
+      </span>
+    </div>
+    <div id="landingMenu" class="navbar-menu">
+      <div class="navbar-end">
+        <span class="navbar-item">
+          <%= link_to new_user_session_path, class: "button is-info" do %>
+            <em class="fas fa-user"></em>&nbsp;Acceso
+          <% end %>
+        </span>
+      </div>
+    </div>
+  </div>
+</nav>

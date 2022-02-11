@@ -16,7 +16,7 @@
 <section class="section">
   <div class="columns">
     <div class="column is-8-mobile is-8-tablet is-6-desktop is-4-fullhd is-offset-4-fullhd is-offset-3-desktop is-offset-2-tablet is-offset-2-mobile">
-      <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+      <%= form_for(resource, as: resource_name, url: session_path(resource_name), data: { turbo: false }) do |f| %>
         <div class="field">
           <div class="control has-icons-left has-icons-right">
             <%= f.text_field :email, class: "input", type: "email", placeholder: "mi@correo.com" %>
