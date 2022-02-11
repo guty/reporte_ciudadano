@@ -21,6 +21,8 @@ class Complaint < ApplicationRecord
     state :created, initial: true
     state :in_process, :attended, :attended_by_program, :rejected
 
+    # after_all_transitions :send_notification
+
     event :process do
       transitions from: :created, to: :in_process
     end
@@ -37,4 +39,8 @@ class Complaint < ApplicationRecord
       transitions from: :created, to: :rejected
     end
   end
+
+  # def send_notification
+  #   SendComplaintNotification.new(self).call
+  # end
 end
