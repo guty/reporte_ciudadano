@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
+  </head>
+  <body>
+    <h1><%= "#{@complaint.user.name} #{@complaint.user.middle_name}" %></h1>
+    <h2>Folio de reporte: <%= format("%04d",@complaint.id) %> </h2>
+    <p>Te comunicamos que tu <strong>reporte ciudadano</strong> ha tenido actividad reciente, en 
+      este momento se encuentra en el estatus <strong><%=Complaint.human_attribute_name("status.#{@complaint.status}")%></strong>.</p>
+    <p>Para mayor información haz click en el siguiente enlance: 
+      <%= link_to "VER MI REPORTE", complaint_url(@complaint) %> </p>
+  </body>
+</html>

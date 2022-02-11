@@ -15,6 +15,7 @@ gem "devise"
 gem "image_processing", "~> 1.2"
 gem "pundit"
 gem "redis", "~> 4.6"
+gem "sendgrid-ruby"
 # gem "kredis"
 
 gem "cssbundling-rails"
