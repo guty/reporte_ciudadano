@@ -1,7 +1,9 @@
+# frozen_string_literal: true
+
 class ComplaintsEventsMailer < ApplicationMailer
-  require 'sendgrid-ruby'
+  require "sendgrid-ruby"
   include SendGrid
-  default from: 'agustin.santana@michelada.io'
+  default from: "agustin.santana@michelada.io"
 
   def send_notification_email(complaint)
     @complaint = complaint

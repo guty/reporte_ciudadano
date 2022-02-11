@@ -9,9 +9,9 @@ module Complaints
 
       if @complaint.send(event) && @complaint.update(complaint_params)
         SendComplaintNotification.new(@complaint).call
-        redirect_to complaint_path(@complaint), notice: 'Acción realizada satisfactoriamente'
+        redirect_to complaint_path(@complaint), notice: "Acción realizada satisfactoriamente"
       else
-        redirect_to complaint_path(@complaint), alert: 'No fue posible realizar la acción'
+        redirect_to complaint_path(@complaint), alert: "No fue posible realizar la acción"
       end
     end
 
@@ -24,7 +24,7 @@ module Complaints
     def set_complaint
       @complaint = complaint_scope.find_by(id: params[:complaint_id])
 
-      redirect_to dashboards_url, alert: 'No fue posible localizar el reporte' unless @complaint
+      redirect_to dashboards_url, alert: "No fue posible localizar el reporte" unless @complaint
     end
 
     def complaint_scope

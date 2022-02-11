@@ -18,7 +18,7 @@ class ComplaintsController < AuthorizationsController
 
     if @complaint.save
       Services::SendComplaintNotification.initialize(@complaint).perform
-      redirect_to complaint_url(@complaint), notice: 'Ha sido generado y enviado exitosamente tu reporte.'
+      redirect_to complaint_url(@complaint), notice: "Ha sido generado y enviado exitosamente tu reporte."
     else
       render :new, status: :unprocessable_entity
     end
@@ -29,7 +29,7 @@ class ComplaintsController < AuthorizationsController
   def update
     @complaint.update(complaint_params)
 
-    redirect_to complaint_url(@complaint), notice: 'Ha sido aplicada la transacción de forma exitosa'
+    redirect_to complaint_url(@complaint), notice: "Ha sido aplicada la transacción de forma exitosa"
   end
 
   def destroy; end
@@ -39,7 +39,7 @@ class ComplaintsController < AuthorizationsController
   def set_complaint
     @complaint = complaint_scope.find_by(id: params[:id])
 
-    redirect_to dashboards_url, alert: 'No fue posible localizar el reporte' unless @complaint
+    redirect_to dashboards_url, alert: "No fue posible localizar el reporte" unless @complaint
   end
 
   def complaint_scope
