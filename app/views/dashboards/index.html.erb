@@ -42,13 +42,15 @@
         </div>
       <% end %>
     </div>
-    <div class="column">
-      <div class="control has-icons-left mt-1">
-        <%= link_to new_complaint_path, class: "button is-info" do %>
-          <i class="fas fa-file-alt" aria-hidden="true"> </i>&nbsp;Nuevo reporte
-        <% end %>
+    <% if current_user.citizen? %>
+      <div class="column">
+        <div class="control has-icons-left mt-1">
+          <%= link_to new_complaint_path, class: "button is-info" do %>
+            <i class="fas fa-file-alt" aria-hidden="true"> </i>&nbsp;Nuevo reporte
+          <% end %>
+        </div>
       </div>
-    </div>
+    <% end %>
   </div>
 </section>
 <%= render "dashboards/complaints_listing" %>

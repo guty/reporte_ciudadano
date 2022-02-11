@@ -1,27 +1,8 @@
-<nav class="bd-navbar navbar">
-  <div class="navbar-brand">
-    <span class="navbar-burger" data-target="landingMenu">
-      <span></span>
-      <span></span>
-      <span></span>
-    </span>
-  </div>
-  <div id="landingMenu" class="navbar-menu">
-    <div class="navbar-end">
-      <span class="navbar-item">
-        <% if signed_in? %>
-          <%= link_to destroy_user_session_path, class: "button is-info", 'data-turbo-method': :delete do %>
-            <i class="fas fa-sign-out-alt" aria-hidden="true"></i>&nbsp;Cerrar sesión
-          <% end %>
-        <% else %>
-          <%= link_to new_user_session_path, class: "button is-info" do %>
-            <em class="fas fa-sign-in-alt"></em>&nbsp;Iniciar sesión
-          <% end %>
-        <% end %>
-      </span>
-    </div>
-  </div>
-</nav>
+<% if signed_in? %>
+  <%=render "shared/navbar"%>
+<% else %>
+  <%=render "landing/navbar"%>
+<% end %>
 <section class="section">
   <div class="columns">
     <div class="column is-offset-3-desktop is-2 has-text-right">
@@ -49,7 +30,19 @@
     <div class="column is-4 is-offset-2">
       <h2 class="is-size-3">¿Como va mi reporte?</h2>
       <span class="subtitle">Para conocer el estado de un reporte solo es necesario proporcionar el folio que lo identifica.</span>
-      <div class="field has-addons mt-1">
+      <%= form_with url: complaints_search_path, id:"find_complaint", method: :get do |f| %>
+        <div class="field has-addons mt-1">
+          <div class="control">
+            <input name="id" class="input" type="text" placeholder="Folio de reporte">
+          </div>
+          <div class="control">
+            <%= button_tag type: 'submit', form:"find_complaint", class: "button is-info", disable_with: 'Enviando...' do %>
+              <i class="fas fa-search" aria-hidden="true"> </i>&nbsp;Buscar
+            <% end %>
+          </div>
+        </div>
+      <% end %>
+      <%# <div class="field has-addons mt-1">
         <div class="control">
           <input class="input" type="text" placeholder="Folio de reporte">
         </div>
@@ -58,7 +51,7 @@
             Buscar
           </a>
         </div>
-      </div>
+      </div> %>
     </div>
     <div class="column is-4">
       <h2 class="is-size-3">Regístrate</h2>
