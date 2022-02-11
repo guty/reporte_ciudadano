@@ -1,0 +1,84 @@
+<section class="section">
+  <div class="container">
+    <div class="columns">
+      <div class="column is-7-fullhd">
+        <div class="mb-5">
+          <h2 class="is-size-3 has-text-info-dark mb-3">Mi perfil</h2>
+        </div>
+        <div class="field is-horizontal">
+          <div class="field-label is-normal">
+            <label class="label">Nombre</label>
+          </div>
+          <div class="field-body">
+            <div class="field">
+              <%= "#{@user.name} #{@user.middle_name} #{@user.last_name}" %>
+            </div>
+          </div>
+        </div>
+        <div class="field is-horizontal">
+          <div class="field-label is-normal">
+            <label class="label">Correo electrónico</label>
+          </div>
+          <div class="field-body">
+            <div class="field">
+              <%= @user.email %>
+            </div>
+          </div>
+        </div>
+        <div class="field is-horizontal">
+          <div class="field-label is-normal">
+            <label class="label">Rol</label>
+          </div>
+          <div class="field-body">
+            <div class="field">
+              <%= role_name(@user.role) %>
+            </div>
+          </div>
+        </div>
+        <div class="field is-horizontal">
+          <div class="field-label is-normal">
+            <label class="label">Teléfono</label>
+          </div>
+          <div class="field-body">
+            <div class="field is-expanded">
+              <%= @user.mobile %>
+            </div>
+          </div>
+        </div>
+        <div class="field is-horizontal">
+          <div class="field-label is-normal">
+            <label class="label">Imagen perfil</label>
+          </div>
+          <div class="field-body">
+            <div class="field is-expanded">
+              <% if @user.avatar.present? %>
+                <figure class="image is-128x128">
+                  <%= display_image(@user.avatar, type: :upload, width: 100, height: 100, gravity: 'faces', crop: :thumb) %>
+                </figure>
+              <% end %>
+            </div>
+          </div>
+        </div>
+        <div class="field is-horizontal">
+          <div class="field-label">
+            <!-- Left empty for spacing -->
+          </div>
+          <div class="field-body">
+            <div class="field is-grouped">
+              <div class="control">
+                <%= link_to users_index_url, class: "button is-light" do %>
+                  <i class="fas fa-chevron-circle-left" aria-hidden="true"> </i>&nbsp;Regresar
+                <% end %>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="column is-8-mobile is-8-tablet is-3-desktop is-5-fullhd">
+        <figure class="image">
+          <%= image_tag 'devise/profile.jpg', alt: "Mi perfil" %>
+        </figure>
+      </div>
+    </div>
+  </div>
+</section>
