@@ -12,7 +12,7 @@ gem "aasm"
 gem "bootsnap", require: false
 gem "cloudinary"
 gem "devise"
-gem "image_processing", "~> 1.2"
+gem "image_processing", "~> 1.12"
 gem "pundit"
 gem "redis", "~> 4.6"
 gem "sendgrid-ruby"
